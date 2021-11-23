@@ -6,12 +6,8 @@
   }
 }
 
-body { 
 
-  
-}
-
-#repeatButton {
+.repeatButton {
   border: none;
   background: url(https://andyhoffman.codes/random-assets/img/slots/repeat.png) transparent 0 0 no-repeat;
   background-size: cover;

@@ -58,6 +58,7 @@ function Navbar() {
             <li className='nav-item'>
               <Link
                 to='/profile'
+                aria-disabled={!isAuthenticated}
                 className='nav-links'
                 onClick={closeMobileMenu}
               >

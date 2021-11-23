@@ -1,7 +1,7 @@
 import React     from 'react';
-import { Button } from './Button';
 import './Css/SlotMachine.css';
-
+import Button_Mui from '@mui/material/Button';
+import { Button } from './Button';
 
 function RepeatButton(props){
   return(
@@ -61,7 +61,7 @@ export default class SlotMachine extends React.Component {
       winner: null,
       prize: 0,
       totalWalllet: 1000,
-      apuesta: 0,
+      apuesta: 1,
       
     }
     this.finishHandler = this.finishHandler.bind(this)
@@ -192,7 +192,7 @@ export default class SlotMachine extends React.Component {
     let wallet = totalWalllet;
     if (premio !== 0){
       let ganador = wallet + premio;
-      this.setState({ totalWalllet: ganador });
+      this.setState({ totalWalllet: ganador - apuesta });
     }
     else{
       let perdedor = wallet - apuesta;
@@ -200,6 +200,7 @@ export default class SlotMachine extends React.Component {
     }
   } 
    
+
   emptyArray() {
     SlotMachine.matches = [];
   }
@@ -212,7 +213,7 @@ export default class SlotMachine extends React.Component {
     );
   }
   render() {
-    const { winner, prize, totalWalllet } = this.state;
+    const { winner, prize, totalWalllet, apuesta } = this.state;
     const getLoser = () => {       
       return SlotMachine.loser[Math.floor(Math.random()*SlotMachine.loser.length)]
     }
@@ -244,9 +245,11 @@ export default class SlotMachine extends React.Component {
           <span>{winner === null ?  '' : winner ? 'Premio = ' + prizeValue :  '' }</span></h1>
           <div className={`spinner-box`}>
               {repeatButton}
-              <Button variant="contained" size="medium">
+              <h1>{"Apuesta: "+apuesta} </h1>
+              <Button_Mui className="button_100" variant="contained"  size="medium">
                   100
-              </Button>  
+              </Button_Mui>  
+              
               <div className={`spinner-container`}>
 
                 <Spinner onFinish={this.finishHandler} ref={(child) => { this._child1 = child; }} timer="1000" />
