@@ -1,0 +1,35 @@
+
+
+.singup{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid white;
+    margin: auto;
+    background-color: black;
+    color: white;
+    width: 50rem;
+    font-size: larger;
+    height: 20vh;
+   
+    
+}
+.signup-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    overflow: hidden;
+    background-image: url('/images/back-singup.jpg');
+    height: 100vh;
+    background-position: cover;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+  }
+.bttn_login{
+    border-radius: 100%;
+    align-items: center;
+    justify-content: center;
+}

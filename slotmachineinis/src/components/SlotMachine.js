@@ -61,7 +61,7 @@ export default class SlotMachine extends React.Component {
       winner: null,
       prize: 0,
       totalWalllet: 1000,
-      apuesta: 1,
+      apuesta: 100,
       
     }
     this.finishHandler = this.finishHandler.bind(this)
@@ -113,62 +113,73 @@ export default class SlotMachine extends React.Component {
   //Funciones Para Calcular si las columnas son iguales y cual es el premio correspondiente
   calculatePrizeThree(icon){
     const {winner, prize } = this.state;
+    let premio = 0;
     if(icon === "Hamburguesa" ){
-      return this.setState({ prize: 200 });
+      
+      
     }
     else if (icon === "Pizza" ){
-      return this.setState({ prize: 400 });
+      premio = 400;
     }
     else if (icon === "Brocoli" ){
-      return this.setState({ prize: 600 });
+      premio = 600;
     }
     else if (icon === "Piña"){
-      return this.setState({ prize: 800 });
+      premio = 800;
     }
     else if (icon === "Platano" ){
-      return this.setState({ prize: 1000 });
+      premio = 1000;
     }
     else if (icon === "Beer"){
-      return this.setState({ prize: 1200 });
+      premio = 1200;
     }
     else if (icon === "Aguacate" ){
-      return this.setState({ prize: 1600 });
+      premio = 1600;
     }
     else if (icon === "Maiz"){
-      return this.setState({ prize: 2000 });
+      premio = 2000;
     }
     else if (icon === "Cereza"){
-      return this.setState({ prize: 3000 });
+      premio = 3000;
     }
+    return this.setState({ prize: premio });
   } 
   calculatePrizeTwo(col1,col2,col3) {
+    let premio = 0;
       if((col1 === "Hamburguesa" && col1===col2 )|| (col2 === "Hamburguesa" && col2===col3 )|| (col1 === "Hamburguesa" && col1===col3)){
-        return this.setState({ prize: 100 });
+        premio = 100;
+        
       }
       else if((col1 === "Pizza" && col1===col2 )|| (col2 === "Pizza" && col2===col3 )|| (col1 === "Pizza" && col1===col3)){
-        return this.setState({ prize: 200 });
+        premio = 200;
+       
       }
       else if((col1 === "Brocoli" && col1===col2 )|| (col2 === "Brocoli" && col2===col3 )|| (col1 === "Brocoli" && col1===col3)){
-        return this.setState({ prize: 300 });
+        premio = 300;
+        
       }
       else if((col1 === "Piña" && col1===col2 )|| (col2 === "Piña" && col2===col3 )|| (col1 === "Piña" && col1===col3)){
-        return this.setState({ prize: 450 });
+        premio = 450;
+       
       }
       else if((col1 === "Platano" && col1===col2 )|| (col2 === "Platano" && col2===col3 )|| (col1 === "Platano" && col1===col3)){
-        return this.setState({ prize: 550 });
+        premio = 550;
+        
       }
       else if((col1 === "Beer" && col1===col2 )|| (col2 === "Beer" && col2===col3 )|| (col1 === "Beer" && col1===col3)){
-        return this.setState({ prize: 650 });
+        premio = 650;
       }
       else if((col1 === "Aguacate" && col1===col2 )|| (col2 === "Aguacate" && col2===col3 )|| (col1 === "Aguacate" && col1===col3)){
-        return this.setState({ prize: 850 });
+        premio = 850;
       }
       else if((col1 === "Maiz" && col1===col2 )|| (col2 === "Maiz" && col2===col3 )|| (col1 === "Maiz" && col1===col3)){
-        return this.setState({ prize: 1100 });
+        premio = 1100;
       }
       else if((col1 === "Cereza" && col1===col2 )|| (col2 === "Cereza" && col2===col3 )|| (col1 === "Cereza" && col1===col3)){
-        return this.setState({ prize: 1600 });
+        premio = 1600;
       }
+      return this.setState({ prize: premio });
+
     }
   calculateEquals(row1, row2, row3) {
       let first = row1;

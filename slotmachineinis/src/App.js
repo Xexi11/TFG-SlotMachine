@@ -28,11 +28,15 @@ function App() {
         
           <Route path='/profile' component={Profile} />
           <Route path='/games' component={Games} />
-          <Route path='/sign-up' component={SignUp} />
+          <Route path='/singup' component={SignUp} />
           <Route path='/slotmachine' component={SlotMachine} />
           </Switch>
         ): (
+          <Switch>
           <Route path='/' exact component={Home} />
+          <Route path='/profile' component={SignUp} />
+          <Route path='/games' component={SignUp} />
+          </Switch>
         )}
           </Switch> 
       
