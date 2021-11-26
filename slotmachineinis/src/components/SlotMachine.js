@@ -61,7 +61,7 @@ export default class SlotMachine extends React.Component {
       winner: null,
       prize: 0,
       totalWalllet: 1000,
-      apuesta: 100,
+      apuesta: 1,
       
     }
     this.finishHandler = this.finishHandler.bind(this)
@@ -115,8 +115,7 @@ export default class SlotMachine extends React.Component {
     const {winner, prize } = this.state;
     let premio = 0;
     if(icon === "Hamburguesa" ){
-      
-      
+      premio = 200;
     }
     else if (icon === "Pizza" ){
       premio = 400;
@@ -181,6 +180,7 @@ export default class SlotMachine extends React.Component {
       return this.setState({ prize: premio });
 
     }
+
   calculateEquals(row1, row2, row3) {
       let first = row1;
       let second = row2;
@@ -210,6 +210,11 @@ export default class SlotMachine extends React.Component {
       this.setState({ totalWalllet: perdedor})
     }
   } 
+  betOnSlot(n){
+    const {apuesta } = this.state;
+    this.setState({ apuesta: n})
+  }
+
    
 
   emptyArray() {
@@ -225,8 +230,10 @@ export default class SlotMachine extends React.Component {
   }
   render() {
     const { winner, prize, totalWalllet, apuesta } = this.state;
-    const getLoser = () => {       
-      return SlotMachine.loser[Math.floor(Math.random()*SlotMachine.loser.length)]
+    const getLoser = () => {    
+         
+      if(winner === false){return SlotMachine.loser[Math.floor(Math.random()*SlotMachine.loser.length)]}
+      
     }
     
     let repeatButton = null;
@@ -249,17 +256,35 @@ export default class SlotMachine extends React.Component {
       <div className={`spinner-marco`}>
         <div >
         {winningSound}
-        <h1 className='textWinning' style={{ color: 'white'}}>
-          <span>{winner === null ? 'Waiting…' : winner ? '🤑 Pure skill! 🤑' : getLoser()}</span>
-        </h1>
+          <h1 className='textWinning' style={{ color: 'white'}}>
+            <span>{winner === null ? 'Waiting…' : winner ? '🤑 Pure skill! 🤑' : getLoser()}</span>
+          </h1>
           <h1 style={{ color: 'white'}}>
           <span>{winner === null ?  '' : winner ? 'Premio = ' + prizeValue :  '' }</span></h1>
           <div className={`spinner-box`}>
               {repeatButton}
-              <h1>{"Apuesta: "+apuesta} </h1>
-              <Button_Mui className="button_100" variant="contained"  size="medium">
+              <h1>{"Apuesta: " +apuesta} </h1>
+              
+              <div className='bet_buttons_container'>
+              <h1 className='textWallet'style={{ color: 'black'}}>
+              <span>{"Total en la cartera: " + totalWalllet}</span></h1>
+              <Button_Mui className="button_5" onClick={() => this.betOnSlot(5)}variant="contained"  size="medium">
+                  5
+              </Button_Mui> 
+              <Button_Mui className="button_50" onClick={() => this.betOnSlot(50)}variant="contained"  size="medium">
+                  50
+              </Button_Mui> 
+              <Button_Mui className="button_100" onClick={() => this.betOnSlot(100)}variant="contained"  size="medium">
                   100
-              </Button_Mui>  
+              </Button_Mui>
+              <Button_Mui className="button_200" onClick={() => this.betOnSlot(200)}variant="contained"  size="medium">
+                  200
+              </Button_Mui> 
+              <Button_Mui className="button_500" onClick={() => this.betOnSlot(500)}variant="contained"  size="medium">
+                  500
+              </Button_Mui> 
+              
+              </div>
               
               <div className={`spinner-container`}>
 
@@ -268,10 +293,10 @@ export default class SlotMachine extends React.Component {
                 <Spinner onFinish={this.finishHandler} ref={(child) => { this._child3 = child; }} timer="2200" />
                 <div className="gradient-fade"></div>
               </div>
+              
           </div>  
         </div>
-        <h1 className='textWallet'style={{ color: 'white'}}>
-          <span>{"Total en la cartera: " + totalWalllet}</span></h1>
+
       </div>
     );
   }

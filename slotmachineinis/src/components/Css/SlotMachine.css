@@ -52,19 +52,25 @@ h1 span {
   margin: 0 10px;
 }
 
-* { box-sizing: border-box; }
-
 .spinner-container {
-
+  position: absolute;
   overflow: hidden;
   height: 632px;  
+  left: 20%;
+  top: 40%;
   padding: 2em;
-  transform: translate(-50%, -50%) scale(.62, .62);
-  position: absolute;
-  top: 60%;
-  left: 50%;
+  transform: translate(-50%, -50%) scale(.62, .62); 
   display: flex;
   transition: 0.3s transform;
+}
+
+.spinner-box{
+  height: auto;
+  display: flex;
+  align-items: center;
+  margin: 2px auto;
+  flex-direction: column;
+
 }
 .spinner-marco{
   
@@ -74,9 +80,11 @@ h1 span {
   background-position: cover;
   background-size: 100%;
   background-repeat: no-repeat;
-  
- 
-  
+}
+
+.bet_buttons_container{
+  height: auto;
+  width: auto;
 }
 
 .app-wrap.winner-false {
