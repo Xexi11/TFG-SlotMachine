@@ -60,8 +60,9 @@ export default class SlotMachine extends React.Component {
     this.state = {
       winner: null,
       prize: 0,
-      totalWalllet: 1000,
+      totalWalllet: 1001,
       apuesta: 1,
+      
       
     }
     this.finishHandler = this.finishHandler.bind(this)
@@ -76,8 +77,8 @@ export default class SlotMachine extends React.Component {
   }
 
   static loser = [ //Frases cuando pierdes
-    'Not quite', 
-    'Stop gambling', 
+    'You\'re awesome at losing', 
+/*  'Stop gambling', 
     'Hey, you lost!', 
     'Ouch! I felt that',      
     'Don\'t beat yourself up',
@@ -85,7 +86,7 @@ export default class SlotMachine extends React.Component {
     'I have a cat. You have a loss',
     'You\'re awesome at losing',
     'Coding is hard',
-    'Don\'t hate the coder'
+    'Don\'t hate the coder' */
   ];
 
   static matches = [];
@@ -95,7 +96,7 @@ export default class SlotMachine extends React.Component {
     SlotMachine.matches.push(value);  
 
     if (SlotMachine.matches.length === 3) {
-      const { winner, prize } = this.state;
+      const { winner, prize, totalWalllet, apuesta, hasplayed } = this.state;
       const first = CalculateSlotValue(SlotMachine.matches[0], "")
       const second = CalculateSlotValue(SlotMachine.matches[1], "")
       const third = CalculateSlotValue(SlotMachine.matches[2], "")
@@ -103,9 +104,10 @@ export default class SlotMachine extends React.Component {
       let results = this.calculateEquals(first,second,third);
       
       
-      console.log(results)
+      /* console.log(results) */
+      
       this.calculateMoneyWallet();
-      this.setState({ winner: results});
+      this.setState({ winner: results, hasplayed: true });
     }
   }
     
@@ -210,9 +212,10 @@ export default class SlotMachine extends React.Component {
       this.setState({ totalWalllet: perdedor})
     }
   } 
-  betOnSlot(n){
+  betOnSlot(n, bet){
+    
     const {apuesta } = this.state;
-    this.setState({ apuesta: n})
+    this.setState({apuesta: n})
   }
 
    
@@ -228,10 +231,15 @@ export default class SlotMachine extends React.Component {
       onClick={props.onClick}/>
     );
   }
+
+
+ 
   render() {
-    const { winner, prize, totalWalllet, apuesta } = this.state;
-    const getLoser = () => {    
-         
+    const { winner, prize, totalWalllet, apuesta, hasplayed } = this.state;
+    const bet = false;
+    const getLoser = () => {   
+
+      
       if(winner === false){return SlotMachine.loser[Math.floor(Math.random()*SlotMachine.loser.length)]}
       
     }
@@ -243,60 +251,66 @@ export default class SlotMachine extends React.Component {
     
     prizeValue = prize
     if (winner !== null) {
+
       repeatButton = <RepeatButton onClick={this.handleClick} />
+      
     }
     
     if (winner) {
       winningSound = <WinningSound />
     }
 
-
+    
 
     return(
-      <div className={`spinner-marco`}>
-        <div >
-        {winningSound}
+      <div className="spinner-marco">
+        
+              {winningSound}
+        
           <h1 className='textWinning' style={{ color: 'white'}}>
+            
             <span>{winner === null ? 'Waiting…' : winner ? '🤑 Pure skill! 🤑' : getLoser()}</span>
           </h1>
           <h1 style={{ color: 'white'}}>
           <span>{winner === null ?  '' : winner ? 'Premio = ' + prizeValue :  '' }</span></h1>
           <div className={`spinner-box`}>
-              {repeatButton}
-              <h1>{"Apuesta: " +apuesta} </h1>
               
-              <h1 className='textWallet'style={{ color: 'black'}}>
-              <span>{"Total en la cartera: " + totalWalllet}</span></h1>
-              <div className='bet_buttons_container'>
-              
-
-              <Button_Mui id="button_bet" onClick={() => this.betOnSlot(5)}variant="contained"  size="medium">
-                  5
-              </Button_Mui> 
-              <Button_Mui id="button_bet" onClick={() => this.betOnSlot(50)}variant="contained"  size="medium">
-                  50
-              </Button_Mui> 
-              <Button_Mui id="button_bet" onClick={() => this.betOnSlot(100)}variant="contained"  size="medium">
-                  100
-              </Button_Mui>
-              <Button_Mui id="button_bet" onClick={() => this.betOnSlot(200)}variant="contained"  size="medium">
-                  200
-              </Button_Mui> 
-              <Button_Mui id="button_bet" onClick={() => this.betOnSlot(500)}variant="contained"  size="medium">
-                  500
-              </Button_Mui> 
-              
-              </div>
-              
-              <div className={`spinner-container`}>
+              <div className='spinner-container'>
 
                 <Spinner onFinish={this.finishHandler} ref={(child) => { this._child1 = child; }} timer="1000" />
                 <Spinner onFinish={this.finishHandler} ref={(child) => { this._child2 = child; }} timer="1400" />
                 <Spinner onFinish={this.finishHandler} ref={(child) => { this._child3 = child; }} timer="2200" />
                 <div className="gradient-fade"></div>
               </div>
-              
-          </div>  
+           
+              <div className='bet_buttons_container'>
+                
+                  <h1>{"Apuesta: " +apuesta} </h1>
+                  <div className='bet_buttons_container_tags'>
+                  
+                  <h1 className='textWallet'style={{ color: 'black'}}>
+                  {repeatButton}
+                  <span>{"Total en la cartera: " + totalWalllet}</span></h1>
+                  </div>
+                  <div className= 'bet_buttons_container_buttons'>
+                  <Button_Mui id="button_bet" onClick={() => this.betOnSlot(5)}variant="contained"  size="medium">
+                      5
+                  </Button_Mui> 
+                  <Button_Mui id="button_bet" onClick={() => this.betOnSlot(50)}variant="contained"  size="medium">
+                      50
+                  </Button_Mui> 
+                  <Button_Mui id="button_bet" onClick={() => this.betOnSlot(100)}variant="contained"  size="medium">
+                      100
+                  </Button_Mui>
+                  <Button_Mui id="button_bet" onClick={() => this.betOnSlot(200)}variant="contained"  size="medium">
+                      200
+                  </Button_Mui> 
+                  <Button_Mui id="button_bet" onClick={() => this.betOnSlot(500)}variant="contained"  size="medium">
+                      500
+                  </Button_Mui> 
+                  </div>
+            </div>
+            
         </div>
 
       </div>

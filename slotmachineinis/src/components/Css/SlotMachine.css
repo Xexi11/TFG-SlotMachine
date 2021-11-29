@@ -1,11 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Cairo');
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg)
-  }
-}
 
+*{
+ overflow: hidden;
+}
 
 .repeatButton {
   border: none;
@@ -19,6 +17,7 @@
 
 
 h1 {  
+  
   font-size: 150%;
   padding: 0.25em .5em;  
   font-family: 'Cairo', sans-serif;
@@ -56,8 +55,8 @@ h1 span {
   position: absolute;
   overflow: hidden;
   height: 632px;  
-  left: 20%;
-  top: 40%;
+  left: 50%;
+  top: 45%;
   padding: 2em;
   transform: translate(-50%, -50%) scale(.62, .62); 
   display: flex;
@@ -65,34 +64,51 @@ h1 span {
 }
 
 .spinner-box{
-  height: auto;
   display: flex;
-  align-items: center;
-  margin: 2px auto;
-  flex-direction: column;
+  justify-content: space-evenly;
 
 }
+
 .spinner-marco{
   
-  height: 100vh;
+  
   border: 1px solid white;
   background-image: url('/images/img-2.jpg');
-  background-position: cover;
+  background-position: fill;
   background-size: 100%;
   background-repeat: no-repeat;
+  height: 100vh;
 }
 
 .bet_buttons_container{
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 300px;
+  width: auto;
+}
+
+.bet_buttons_container_tags{
+
+  flex-direction: row;
+}
+
+.bet_buttons_container_buttons{
+  
+  
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: row;
   height: 100px;
-  width: 50;
-  
+  width: 500px;
 }
+
 .button_bet{
-  padding: 4px auto !important;
+  
 }
 
 
