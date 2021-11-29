@@ -3,6 +3,7 @@
   margin: 0;
   padding: 0;
   font-family: 'PT Sans', sans-serif;
+  overflow: hidden;
 }
 
 .home,
@@ -16,9 +17,12 @@
   font-size: 3rem;
   
 }
+.home{
+  
+}
 
 .games {
-
+  
   background-image: url('/images/vegas.jpg');
   background-position: center;
   background-size:100%;
@@ -26,6 +30,7 @@
   color: rgb(0, 0, 0);
   font-size: 20px;
   height: 100vh;
+  
 
 }
 

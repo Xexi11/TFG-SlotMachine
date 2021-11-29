@@ -85,10 +85,10 @@ h1 span {
 .bet_buttons_container{
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   flex-direction: row;
   height: 100px;
-  width: auto;
+  width: 50;
   
 }
 .button_bet{
