@@ -83,9 +83,19 @@ h1 span {
 }
 
 .bet_buttons_container{
-  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  height: 100px;
   width: auto;
+  
 }
+.button_bet{
+  padding: 4px auto !important;
+}
+
+
 
 .app-wrap.winner-false {
   animation: linear 1s spin;

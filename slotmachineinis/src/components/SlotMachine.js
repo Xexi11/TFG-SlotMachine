@@ -265,22 +265,24 @@ export default class SlotMachine extends React.Component {
               {repeatButton}
               <h1>{"Apuesta: " +apuesta} </h1>
               
-              <div className='bet_buttons_container'>
               <h1 className='textWallet'style={{ color: 'black'}}>
               <span>{"Total en la cartera: " + totalWalllet}</span></h1>
-              <Button_Mui className="button_5" onClick={() => this.betOnSlot(5)}variant="contained"  size="medium">
+              <div className='bet_buttons_container'>
+              
+
+              <Button_Mui id="button_bet" onClick={() => this.betOnSlot(5)}variant="contained"  size="medium">
                   5
               </Button_Mui> 
-              <Button_Mui className="button_50" onClick={() => this.betOnSlot(50)}variant="contained"  size="medium">
+              <Button_Mui id="button_bet" onClick={() => this.betOnSlot(50)}variant="contained"  size="medium">
                   50
               </Button_Mui> 
-              <Button_Mui className="button_100" onClick={() => this.betOnSlot(100)}variant="contained"  size="medium">
+              <Button_Mui id="button_bet" onClick={() => this.betOnSlot(100)}variant="contained"  size="medium">
                   100
               </Button_Mui>
-              <Button_Mui className="button_200" onClick={() => this.betOnSlot(200)}variant="contained"  size="medium">
+              <Button_Mui id="button_bet" onClick={() => this.betOnSlot(200)}variant="contained"  size="medium">
                   200
               </Button_Mui> 
-              <Button_Mui className="button_500" onClick={() => this.betOnSlot(500)}variant="contained"  size="medium">
+              <Button_Mui id="button_bet" onClick={() => this.betOnSlot(500)}variant="contained"  size="medium">
                   500
               </Button_Mui> 
               
