@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Cairo');
 
 
-*{
- overflow: hidden;
-}
 
 .repeatButton {
   border: none;
@@ -24,15 +21,24 @@ h1 {
 }
 
 h1 span {
-  color: aliceblue;
+  color: rgb(0, 0, 0);
   /* border: 1px solid hsla(208, 100%, 97.1%, .2); */
   padding: 0.1em .2em;  
+  margin: 2px;
+}
+.text-marco{
+
+  align-items: center;
+  position: center;
+}
+.textWinning{
+  position:center;  
 }
 
 .button_cointainer{
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  
+  
+  
 }
 .icons { 
   display: inline-block;
@@ -52,11 +58,12 @@ h1 span {
 }
 
 .spinner-container {
-  position: absolute;
+  
+  position: fixed;
   overflow: hidden;
   height: 632px;  
   left: 50%;
-  top: 45%;
+  top: 40%;
   padding: 2em;
   transform: translate(-50%, -50%) scale(.62, .62); 
   display: flex;
@@ -86,14 +93,17 @@ h1 span {
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: center;
+  
   height: 300px;
-  width: auto;
+  width: 700px;
 }
 
 .bet_buttons_container_tags{
-
-  flex-direction: row;
+  flex-direction: row !important;
+  align-items: center;
+  
+  width: 700px;
+  
 }
 
 .bet_buttons_container_buttons{
@@ -107,8 +117,13 @@ h1 span {
   width: 500px;
 }
 
-.button_bet{
-  
+.MuiButton-root{
+  font-size: 16px !important;
+  width: 90px !important;
+  background-color: rgba(15, 15, 15, 0.863) !important;
+  border-radius: 28px !important;
+
+
 }
 
 

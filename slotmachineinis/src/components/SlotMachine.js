@@ -5,9 +5,9 @@ import { Button } from './Button';
 
 function RepeatButton(props){
   return(
-    <div className="button_cointainer">
-      <Button onClick={props.onClick} type="button" id='repeatButton' autocomplete="off" aria-pressed="false" buttonStyle='btn--outline' >Play Again</Button>
-    </div>
+    
+      <Button onClick={props.onClick} type="button" id='repeatButton' autocomplete="off" aria-pressed="false" buttonStyle='btn--contained' >Play Again</Button>
+  
   );
 }
 
@@ -265,14 +265,15 @@ export default class SlotMachine extends React.Component {
     return(
       <div className="spinner-marco">
         
-              {winningSound}
-        
+        <div className="text-marco">    
+          {winningSound}
           <h1 className='textWinning' style={{ color: 'white'}}>
             
             <span>{winner === null ? 'Waiting…' : winner ? '🤑 Pure skill! 🤑' : getLoser()}</span>
+            <span>{winner === null ?  '' : winner ? 'Premio = ' + prizeValue :  '' }</span>
           </h1>
-          <h1 style={{ color: 'white'}}>
-          <span>{winner === null ?  '' : winner ? 'Premio = ' + prizeValue :  '' }</span></h1>
+         </div> 
+          
           <div className={`spinner-box`}>
               
               <div className='spinner-container'>

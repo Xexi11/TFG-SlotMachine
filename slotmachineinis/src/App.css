@@ -22,26 +22,27 @@
 }
 
 .games {
-  
+  overflow-y: hidden;
   background-image: url('/images/vegas.jpg');
-  background-position: center;
-  background-size:100%;
+  margin-top: auto;
+  
+  background-size: 100%;
   background-repeat: no-repeat;
   color: rgb(0, 0, 0);
   font-size: 20px;
-  height: 100vh;
+  
   
 
 }
 
 .profile {
-  height: 100vh;
-  background-image: url('/images/img-1.jpg');
-  background-position: center;
-  background-size: fill;
+  overflow-y: hidden;
+  background-image: url('/images/img-background.jpg');
+  background-position: cover;
+  background-size: 100%;
   background-repeat: no-repeat;
   color: #fff;
-  font-size: 100px;
+  
 }
 
 

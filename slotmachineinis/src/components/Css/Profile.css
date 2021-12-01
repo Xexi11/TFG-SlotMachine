@@ -1,0 +1,36 @@
+.profile_contanier{
+    position: fixed;
+    border: 1px solid black;
+    font-size: 20px;
+    color: black;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    flex-direction: column;
+    background-color: rgb(247, 240, 230);
+    border-radius: 5%;
+    
+
+    
+}
+.profile_contanier_name{
+    display: flex;
+    flex-direction: row ;
+    align-content: space-around;
+    
+}
+
+.profile_contanier_imatge_src{
+    margin: 5px;
+    size: 100%;
+    border-radius: 30%;
+    
+
+}
+.user_contanier_locale{
+    text-transform: uppercase;
+}
+.user_contanier_email{
+    font-style:normal;
+    margin: 2px;
+}
