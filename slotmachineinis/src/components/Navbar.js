@@ -32,7 +32,9 @@ function Navbar() {
   return (
     <>
       <nav className='navbar'>
+      {!isAuthenticated ? (
         <div className='navbar-container'>
+
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
             GEMINIS
             <img className='navbar-icon' src='/images/inisLogo.png'/>{/*  La imagen no es cuadrada */}
@@ -76,7 +78,68 @@ function Navbar() {
             </li>
           </ul>
           {button && <Button onClick={() => loginWithRedirect()} buttonStyle='btn--outline' >SIGN UP</Button>}
+
+         
+
+        
         </div>
+         ): 
+        (<div className='navbar-container'>
+        
+        
+        <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
+          GEMINIS
+          <img className='navbar-icon' src='/images/inisLogo.png'/>{/*  La imagen no es cuadrada */}
+        </Link>
+        <div className='menu-icon' onClick={handleClick}>
+          <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
+        </div>
+        <ul className={click ? 'nav-menu active' : 'nav-menu'}>
+          <li className='nav-item'>
+            <Link to='/' className='nav-links' onClick={closeMobileMenu}>
+              Home
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link
+              to='/games'
+              className='nav-links'
+              onClick={closeMobileMenu}
+            >
+              Games
+            </Link>
+          </li>
+          <li className='nav-item'>
+            <Link
+              to='/profile'
+              className='nav-links'
+              onClick={closeMobileMenu}
+            >
+              Profile
+            </Link>
+          </li>
+
+          <li>
+            <Link
+              to='/profile'
+              className='nav-links-mobile'
+              onClick={() =>
+                logout({
+                  returnTo: window.location.origin,
+                }), closeMobileMenu} 
+            >
+              Sign Out
+            </Link>
+          </li>
+        </ul>
+        {button && <Button  onClick={() =>
+        logout({
+          returnTo: window.location.origin,
+        })} buttonStyle='btn--outline'  >SIGN OUT</Button>}
+
+      </div>
+
+          )}
       </nav>
     </>
   );

@@ -78,7 +78,7 @@ export default class SlotMachine extends React.Component {
 
   static loser = [ //Frases cuando pierdes
     'You\'re awesome at losing', 
-/*  'Stop gambling', 
+    'Stop gambling', 
     'Hey, you lost!', 
     'Ouch! I felt that',      
     'Don\'t beat yourself up',
@@ -86,7 +86,7 @@ export default class SlotMachine extends React.Component {
     'I have a cat. You have a loss',
     'You\'re awesome at losing',
     'Coding is hard',
-    'Don\'t hate the coder' */
+    'Don\'t hate the coder' 
   ];
 
   static matches = [];
@@ -100,7 +100,7 @@ export default class SlotMachine extends React.Component {
       const first = CalculateSlotValue(SlotMachine.matches[0], "")
       const second = CalculateSlotValue(SlotMachine.matches[1], "")
       const third = CalculateSlotValue(SlotMachine.matches[2], "")
-      
+   
       let results = this.calculateEquals(first,second,third);
       
       
@@ -212,12 +212,24 @@ export default class SlotMachine extends React.Component {
       this.setState({ totalWalllet: perdedor})
     }
   } 
-  betOnSlot(n, bet){
+  betOnSlot(n,){
     
-    const {apuesta } = this.state;
-    this.setState({apuesta: n})
+    const {winner, prize, totalWalllet, hasplayed ,apuesta } = this.state;
+    console.log(totalWalllet, n)
+    const apostar = this.checkApuesta(n)
+    
+    this.setState({apuesta: apostar})
   }
 
+  checkApuesta(number){
+    const {winner, prize, totalWalllet, hasplayed ,apuesta } = this.state;
+    if(totalWalllet <= number){
+      return totalWalllet; 
+    }
+    else{
+      return number;
+    }
+  }
    
 
   emptyArray() {
@@ -236,12 +248,12 @@ export default class SlotMachine extends React.Component {
  
   render() {
     const { winner, prize, totalWalllet, apuesta, hasplayed } = this.state;
-    const bet = false;
-    const getLoser = () => {   
-
-      
-      if(winner === false){return SlotMachine.loser[Math.floor(Math.random()*SlotMachine.loser.length)]}
-      
+    
+    const getLoser = () => {      
+      let perdedor
+      console.log(winner, prize, totalWalllet, apuesta, hasplayed ) 
+      if(totalWalllet === 1000){}
+      else if(winner === false){return SlotMachine.loser[Math.floor(Math.random()*SlotMachine.loser.length)]}      
     }
     
     let repeatButton = null;
@@ -286,7 +298,7 @@ export default class SlotMachine extends React.Component {
            
               <div className='bet_buttons_container'>
                 
-                  <h1>{"Apuesta: " +apuesta} </h1>
+                  <h1>{"Apuesta: " + this.checkApuesta(apuesta)} </h1>
                   <div className='bet_buttons_container_tags'>
                   
                   <h1 className='textWallet'style={{ color: 'black'}}>

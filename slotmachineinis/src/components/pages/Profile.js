@@ -7,6 +7,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 export default function Profile() {
   const {user, isAuthenticated, isLoading} = useAuth0();
   const {name, picture, email,} = user;
+  
   if (isLoading){ return <div>Loading...</div> }
   
  
@@ -23,6 +24,7 @@ export default function Profile() {
           <h1 className= "user_contanier_locale">{user.locale}</h1>
         </div>
       <h1 className= "user_contanier_email" >{user.email }</h1>
+      <h1>Wallet: 1000 </h1>
       
       
      

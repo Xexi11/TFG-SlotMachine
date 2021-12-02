@@ -4,7 +4,7 @@
 
 .btn {
   padding: 8px 20px;
-  border-radius: 2px;
+  border-radius: 5px;
   outline: none;
   border: none;
   cursor: pointer;
@@ -23,7 +23,10 @@
   border: 1px solid var(--primary);
   transition: all 0.3s ease-out;
 }
-
+.btn--small{
+  padding: 4px 20px;
+  font-size: 16px;
+}
 .btn--medium {
   padding: 8px 20px;
   font-size: 18px;
