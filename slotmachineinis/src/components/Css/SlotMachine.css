@@ -82,11 +82,11 @@ h1 span {
 
 .spinner-marco{
   
-  
+  overflow: hidden;
   border: 1px solid white;
-  background-image: url('/images/img-2.jpg');
+  background-image: url('/images/pattern.png');
   background-position: fill;
-  background-size: 100%;
+  background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
 }

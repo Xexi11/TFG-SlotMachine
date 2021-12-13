@@ -84,7 +84,6 @@ export default class SlotMachine extends React.Component {
     'Don\'t beat yourself up',
     'There goes the college fund',
     'I have a cat. You have a loss',
-    'You\'re awesome at losing',
     'Coding is hard',
     'Don\'t hate the coder' 
   ];
