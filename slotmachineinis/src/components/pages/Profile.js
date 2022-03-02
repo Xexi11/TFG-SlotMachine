@@ -17,14 +17,14 @@ export default function Profile() {
   <div className="profile">
      <div className="profile_contanier">
       <div className="profile_contanier_imatge">
-        <img src={picture} className="profile_contanier_imatge_src"/>
+        <img src={user.picture} className="profile_contanier_imatge_src"/>
         </div>
         <div className="profile_contanier_name" >
           <h1>{user.name}</h1>
           <h1 className= "user_contanier_locale">{user.locale}</h1>
         </div>
-      <h1 className= "user_contanier_email" >{user.email }</h1>
-      <h1>Wallet: 1000 </h1>
+      <h2 className= "user_contanier_email" >{user.email }</h2>
+      <h3>Wallet: 1000 </h3>
       
       
      

@@ -1,16 +1,17 @@
 .profile_contanier{
-    position: fixed;
-    top: 30%;
-    height: 400px;
+    position: fixed;  
+    height: 30rem;
     border: 1px solid black;
-    font-size: 26px;
+    font-size: 30px;
+    width: 30rem;
     color: rgb(31, 30, 30);
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
     flex-direction: column;
-    background-color: rgb(247, 240, 230);
+    background-color: rgba(214, 209, 203, 0.973);
     border-radius: 5%;
+    overflow-y: hidden;
     
 
     
@@ -19,22 +20,23 @@
     display: flex;
     flex-direction: row ;
     align-content: space-around;
+    font-size: 26px;
+    font-weight: bolder;
     
 }
 
 .profile_contanier_imatge_src{
-    height: 130px;
-    width: 130px;
-    margin: 5px;
-    size: 100%;
-    border-radius: 30%;
-    
+    max-width: 100%;
+    border-radius: 1rem;
+    height: auto;
+    box-shadow: 0 0 15px 10px rgba(28, 30, 31, 0.5);
 
 }
 .user_contanier_locale{
     text-transform: uppercase;
 }
 .user_contanier_email{
-    font-style:normal;
-    margin: 2px;
+    font-weight: lighter;
+    font-size: 25px;
+    margin-bottom: 2rem;
 }

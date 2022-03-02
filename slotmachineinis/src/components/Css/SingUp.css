@@ -1,6 +1,21 @@
 
 
 .singup{
+   
+    overflow-y: hidden;
+    
+    background-image: url('/images/back-singup.jpg');
+    background-position: cover;
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+    font-size: 20px;
+   
+    
+}
+.signup-box {
+    overflow-y: hidden;
+    background-size: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,25 +23,9 @@
     margin: auto;
     background-color: black;
     color: white;
-    width: 50rem;
+    padding: 10px;
     font-size: larger;
     height: 20vh;
-   
-    
-}
-.signup-box {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    overflow: hidden;
-    background-image: url('/images/back-singup.jpg');
-    height: 100vh;
-    background-position: cover;
-    background-size: 100%;
-    background-repeat: no-repeat;
-    color: rgb(0, 0, 0);
-    font-size: 20px;
   }
 .bttn_login{
     border-radius: 100%;

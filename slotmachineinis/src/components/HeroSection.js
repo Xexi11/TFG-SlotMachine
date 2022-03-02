@@ -9,7 +9,7 @@ function HeroSection() {
   const { user, loginWithRedirect} = useAuth0();
 
   const inisweb = () =>{
-    window.location = "https://geminisprojects.site/"
+    window.location = "https://zodiacblockchainsolutions.com/"
   }
 
   return (

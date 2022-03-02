@@ -5,8 +5,8 @@ import { Button } from './Button';
 
 function RepeatButton(props){
   return(
-    
-      <Button onClick={props.onClick} type="button" id='repeatButton' autocomplete="off" aria-pressed="false" buttonStyle='btn--contained' >Play Again</Button>
+      <Button onClick={props.onClick} type="button" id='repeatButton'  buttonStyle='btn--primary'
+      buttonSize='btn--large' autocomplete="off" aria-pressed="false"  >Play Again</Button>
   
   );
 }
@@ -234,14 +234,15 @@ export default class SlotMachine extends React.Component {
   emptyArray() {
     SlotMachine.matches = [];
   }
-  RepeatButton(props){
+  /* RepeatButton(props){
     return(
       <button 
       aria-label='Play again'
       id='repeatButton'
-      onClick={props.onClick}/>
+      onClick={props.onClick}
+      />
     );
-  }
+  } */
 
 
  
@@ -251,8 +252,8 @@ export default class SlotMachine extends React.Component {
     const getLoser = () => {      
       let perdedor
       console.log(winner, prize, totalWalllet, apuesta, hasplayed ) 
-      if(totalWalllet === 1000){}
-      else if(winner === false){return SlotMachine.loser[Math.floor(Math.random()*SlotMachine.loser.length)]}      
+      
+      if(winner === false){return SlotMachine.loser[Math.floor(Math.random()*SlotMachine.loser.length)]}      
     }
     
     let repeatButton = null;
@@ -278,7 +279,7 @@ export default class SlotMachine extends React.Component {
         
         <div className="text-marco">    
           {winningSound}
-          <h1 className='textWinning' style={{ color: 'white'}}>
+          <h1 className='textWinning'>
             
             <span>{winner === null ? 'Waiting…' : winner ? '🤑 Pure skill! 🤑' : getLoser()}</span>
             <span>{winner === null ?  '' : winner ? 'Premio = ' + prizeValue :  '' }</span>
@@ -299,25 +300,24 @@ export default class SlotMachine extends React.Component {
                 
                   <h1>{"Apuesta: " + this.checkApuesta(apuesta)} </h1>
                   <div className='bet_buttons_container_tags'>
-                  
-                  <h1 className='textWallet'style={{ color: 'black'}}>
-                  {repeatButton}
-                  <span>{"Total en la cartera: " + totalWalllet}</span></h1>
+                      <h1 className='textWallet'style={{ color: 'black'}}>
+                      {repeatButton}
+                      <span>{"Total en la cartera: " + totalWalllet}</span></h1>
                   </div>
                   <div className= 'bet_buttons_container_buttons'>
-                  <Button_Mui id="button_bet" onClick={() => this.betOnSlot(5)}variant="contained"  size="medium">
+                  <Button_Mui id="button_bet" onClick={() => this.betOnSlot(5)}variant="contained"  size="large">
                       5
                   </Button_Mui> 
-                  <Button_Mui id="button_bet" onClick={() => this.betOnSlot(50)}variant="contained"  size="medium">
+                  <Button_Mui id="button_bet" onClick={() => this.betOnSlot(50)}variant="contained"  size="large">
                       50
                   </Button_Mui> 
-                  <Button_Mui id="button_bet" onClick={() => this.betOnSlot(100)}variant="contained"  size="medium">
+                  <Button_Mui id="button_bet" onClick={() => this.betOnSlot(100)}variant="contained"  size="large">
                       100
                   </Button_Mui>
-                  <Button_Mui id="button_bet" onClick={() => this.betOnSlot(200)}variant="contained"  size="medium">
+                  <Button_Mui id="button_bet" onClick={() => this.betOnSlot(200)}variant="contained"  size="large">
                       200
                   </Button_Mui> 
-                  <Button_Mui id="button_bet" onClick={() => this.betOnSlot(500)}variant="contained"  size="medium">
+                  <Button_Mui id="button_bet" onClick={() => this.betOnSlot(500)}variant="contained"  size="large">
                       500
                   </Button_Mui> 
                   </div>

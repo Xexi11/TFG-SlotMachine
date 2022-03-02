@@ -1,7 +1,9 @@
 .cards {
-  border:1px solid black;
+  border:3px solid black;
   background: #fff;
   height: fit-content;
+  border-radius: 5%;
+  overflow-y: hidden;
   
 }
 

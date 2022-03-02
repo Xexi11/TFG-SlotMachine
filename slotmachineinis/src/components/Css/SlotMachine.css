@@ -14,20 +14,20 @@
 
 
 h1 {  
-  
   font-size: 150%;
   padding: 0.25em .5em;  
   font-family: 'Cairo', sans-serif;
 }
 
 h1 span {
-  color: rgb(0, 0, 0);
+  color: rgb(202, 202, 202);
   /* border: 1px solid hsla(208, 100%, 97.1%, .2); */
+  font-size: larger;
   padding: 0.1em .2em;  
   margin: 2px;
 }
 .text-marco{
-
+  font-size: 20px;
   align-items: center;
   position: center;
   
@@ -35,12 +35,11 @@ h1 span {
 .textWinning{
   position:center;  
 }
+.button{
 
-.button_cointainer{
-  
-  
-  
+  font-size: 50px;
 }
+
 .icons { 
   display: inline-block;
   width: 128px;
@@ -82,57 +81,51 @@ h1 span {
 
 .spinner-marco{
   
-  overflow: hidden;
-  border: 1px solid white;
-  background-image: url('/images/pattern.png');
+  overflow-y: hidden;
+  border-top: 1px solid white;
+  background-image: url('/images/fondooscuro.png');
   background-position: fill;
   background-size: cover;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 89vh;
+  color: rgb(202, 202, 202);
 }
 
 .bet_buttons_container{
-  transform: translate(-0.7%, 3.7%) scale(.60, .60); 
+  transform: translate(-0.7%, 3.7%) scale(.80, .80); 
 
   translate:(-0.7%, 3.7%) scal;
   transition: 0.3s transform;
   position: fixed;
-  bottom: 5%;
- 
+  bottom: 5vh;
+  font-size: 25px;
   display: flex;
   align-items: center;
   flex-direction: column;
-  
   height: auto;
-  width: 700px;
 }
 
 .bet_buttons_container_tags{
   flex-direction: row !important;
   align-items: center;
-  
-  width: 700px;
-  
+  justify-content: space-between;
+  font-size: 18px;
 }
 
 .bet_buttons_container_buttons{
-  
-  
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: row;
-  height: 100px;
-  width: 500px;
+  height: 10rem;
+  width: 50rem;
 }
 
 .MuiButton-root{
-  font-size: 16px !important;
-  width: 90px !important;
-  background-color: rgba(15, 15, 15, 0.863) !important;
+  font-size: 20px !important;
+  width: 120px !important;
+  background-color: rgba(78, 78, 78, 0.863) !important;
   border-radius: 28px !important;
-
-
 }
 
 
