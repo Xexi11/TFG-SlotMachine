@@ -1,9 +1,8 @@
 HomePage: 
-    Cambiar Logo 
-    Paginas que redireccionen correctamente
+
 
     Fotter
-
+        -Faltan 2 links (Terms of Service y Linkedin)
 
     
 

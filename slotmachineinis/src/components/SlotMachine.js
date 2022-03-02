@@ -85,7 +85,9 @@ export default class SlotMachine extends React.Component {
     'There goes the college fund',
     'I have a cat. You have a loss',
     'Coding is hard',
-    'Don\'t hate the coder' 
+    'Don\'t hate the coder' ,
+    'You\'re a loser',
+    
   ];
 
   static matches = [];
@@ -109,8 +111,6 @@ export default class SlotMachine extends React.Component {
       this.setState({ winner: results, hasplayed: true });
     }
   }
-    
-
   //Funciones Para Calcular si las columnas son iguales y cual es el premio correspondiente
   calculatePrizeThree(icon){
     const {winner, prize } = this.state;
@@ -212,7 +212,6 @@ export default class SlotMachine extends React.Component {
     }
   } 
   betOnSlot(n,){
-    
     const {winner, prize, totalWalllet, hasplayed ,apuesta } = this.state;
     console.log(totalWalllet, n)
     const apostar = this.checkApuesta(n)

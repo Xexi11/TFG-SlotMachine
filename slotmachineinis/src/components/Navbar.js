@@ -36,8 +36,8 @@ function Navbar() {
         <div className='navbar-container'>
 
           <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-            GEMINIS
-            <img className='navbar-icon' src='/images/inisLogo.png'/>{/*  La imagen no es cuadrada */}
+            ZODIAC
+            <img className='navbar-icon' src='/images/ZODIAC_LOGO.png'/>{/*  La imagen no es cuadrada */}
           </Link>
           <div className='menu-icon' onClick={handleClick}>
             <i className={click ? 'fas fa-times' : 'fas fa-bars'} />
@@ -86,8 +86,8 @@ function Navbar() {
          ): 
         (<div className='navbar-container'>
         <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
-          GEMINIS
-          <img className='navbar-icon' src='/images/inisLogo.png'/>{/*  La imagen no es cuadrada */}
+          ZODIAC
+          <img className='navbar-icon' src='/images/ZODIAC_LOGO.png'/>{/*  La imagen no es cuadrada */}
         </Link>
         <div className='menu-icon' onClick={handleClick}>
           <i className={click ? 'fas fa-times' : 'fas fa-bars'} />

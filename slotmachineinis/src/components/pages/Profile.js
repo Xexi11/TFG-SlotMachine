@@ -5,6 +5,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 
 export default function Profile() {
+  let TotalWallet = 1000;
   const {user, isAuthenticated, isLoading} = useAuth0();
   const {name, picture, email,} = user;
   
@@ -24,7 +25,7 @@ export default function Profile() {
           <h1 className= "user_contanier_locale">{user.locale}</h1>
         </div>
       <h2 className= "user_contanier_email" >{user.email }</h2>
-      <h3>Wallet: 1000 </h3>
+      <h3>{ 'Wallet: '+ TotalWallet }</h3>
       
       
      

@@ -4,6 +4,19 @@ import { Button } from './Button';
 import { Link } from 'react-router-dom';
 
 function Footer() {
+  const inisWeb = () =>{
+    window.location = "https://zodiacblockchainsolutions.com/"
+  }
+  const Instagram = () =>{
+    window.location = "https://www.instagram.com/zodiacblockchainsolutions/"
+  }
+  const Tiktok = () =>{
+    window.location = "https://www.tiktok.com/@zodiacblockchainsolution"
+  }
+  const LinkedIn = () =>{
+    window.location = "https://zodiacblockchainsolutions.com/"
+  }
+
   return (
     <div className='footer-container'>
       <section className='footer-subscription'>
@@ -16,42 +29,42 @@ function Footer() {
         <div className='footer-link-wrapper'>
           <div class='footer-link-items'>
             <h2>About Us</h2>
-            <Link to='/sign-up'>How it works</Link>
-            <Link to='/'>Investors</Link>
-            <Link to='/'>Terms of Service</Link>
+            <Link to='/games'>How it works</Link>
+            <Link onClick={inisWeb}>Investors</Link>
+            <Link to='/'>Terms of Service</Link> {/* Onclick poner unos terminos y condicios (paginas por internet) */}
           </div>
           <div class='footer-link-items'>
             <h2>Contact Us</h2>
-            <Link to='/'>Contact</Link>
-            <Link to='/'>Support</Link>
+            <Link onClick={inisWeb}>Contact</Link>
+            <Link onClick={inisWeb}>Support</Link>
           </div>
         </div>
         <div className='footer-link-wrapper'>
           <div class='footer-link-items'>
             <h2>Social Media</h2>
             <Link
-              class='social-icon-link facebook'
-              to='/'
+              class='social-icon-link linkedin'
+              /* onClick={ } Falta redirigir a Linkedin */
               target='_blank'
-              aria-label='Facebook'
+              aria-label='LinkedIn'
             >
-              <i class='fab fa-facebook-f' />
+              <i class='fab fa-linkedin' />
             </Link>
             <Link
               class='social-icon-link instagram'
-              to='/'
+              onClick={Instagram}
               target='_blank'
               aria-label='Instagram'
             >
               <i class='fab fa-instagram' />
             </Link>
             <Link
-              class='social-icon-link twitter'
-              to='/'
+              class='social-icon-link tiktok'
+              onClick={Tiktok}
               target='_blank'
-              aria-label='Twitter'
+              aria-label='Tik-Tok'
             >
-              <i class='fab fa-twitter' />
+              <i class='fab fa-tiktok' />
             </Link>
 
           </div>
@@ -61,7 +74,7 @@ function Footer() {
         <div class='social-media-wrap'>
           <div class='footer-logo'>
             <Link to='/' className='social-logo'>
-            GEMINIS
+            ZODIAC
             <img class='navbar-icon' src='/images/gemini.png'/>{/*  La imagen no es cuadrada */}
             </Link>
           </div>
