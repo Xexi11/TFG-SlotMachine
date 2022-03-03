@@ -118,8 +118,32 @@ h1 {
   }
 }
 
-@media only screen and (max-width: 1024px) {
-  .cards__item {
-    margin-bottom: 2rem;
+@media all  and (max-width: 1024px) {
+  
+  .cards{
+    
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+ 
+    
+   transform:scale(1); 
+    
+  }
+  .cards__container{
+   
+    display:flex;
+    height: 80vh;
+    
+    transform:scale(0.9); 
+   
+  }
+  .cards__wrapper{
+   
+    overflow-y: scroll;
+
   }
 }
+
+
+

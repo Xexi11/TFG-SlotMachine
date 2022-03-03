@@ -88,10 +88,11 @@
 
 @media screen and (max-width: 960px) {
   .NavbarItems {
-    position: relative;
+    position: absolute;
   }
-
+  
   .nav-menu {
+    
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -101,6 +102,8 @@
     left: -100%;
     opacity: 1;
     transition: all 0.5s ease;
+    
+    
   }
 
   .nav-menu.active {

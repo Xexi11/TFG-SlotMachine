@@ -23,25 +23,25 @@
 .games {
   overflow-y: hidden;
   background-image: url('/images/vegas.jpg');
-  height: 88.5vh;
-  
+  background-position: center;
+  height: 89vh;
   background-size: 100%;
   background-repeat: no-repeat;
   color: rgb(0, 0, 0);
   font-size: 20px;
   
-  overflow-y: hidden;
+
 
 }
 
 .profile {
-  overflow-y: hidden;
+ 
   background-image: url('/images/img-background.jpg');
   background-position: cover;
   background-size: 100%;
   background-repeat: no-repeat;
   color: #fff;
-  overflow-y: hidden;
+  
 }
 
 .singup{
@@ -49,3 +49,42 @@
 }
 
 
+@media all  and (max-width: 2500px) {
+  .games{
+    overflow: hidden;
+    background-position:center;
+    background-size: cover;
+    height: 91vh;
+  }
+  .profile{
+    overflow: hidden;
+    height: 91vh;
+    background-position:center;
+    background-size: cover;
+    
+  }
+  .singup{
+    overflow: hidden;
+    height: 91vh;
+    background-position:center;
+    background-size: cover;
+  }
+}
+@media all  and (max-width: 1500px) {
+  .games{
+    overflow: hidden;
+    background-position:center;
+    background-size: cover;
+  }
+  .profile{
+    overflow: hidden;
+    background-position:center;
+    background-size: cover;
+    
+  }
+  .singup{
+    overflow: hidden;
+    background-position:center;
+    background-size: cover;
+  }
+}
