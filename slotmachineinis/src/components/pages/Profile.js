@@ -1,41 +1,28 @@
-import React from 'react';
-import '../../App.css';
-import '../Css/Profile.css';
-import { useAuth0 } from '@auth0/auth0-react';
-
+import React from "react";
+import "../../App.css";
+import "../Css/Profile.css";
+import { auth, provider } from "../../firebase-config";
+import { getAuth } from "firebase/auth";
 
 export default function Profile() {
   let TotalWallet = 1000;
-  const {user, isAuthenticated, isLoading} = useAuth0();
-  const {name, picture, email,} = user;
-  
-  if (isLoading){ return <div>Loading...</div> }
-  
- 
 
-  return(
-    
-  <div className="profile">
-     <div className="profile_contanier">
-      <div className="profile_contanier_imatge">
-        <img src={user.picture} className="profile_contanier_imatge_src"/>
+  const auth = getAuth();
+  const user = auth.currentUser;
+
+  return (
+    <div className="profile">
+      <div className="profile_contanier">
+        <div className="profile_contanier_imatge">
+          <img src={user.photoURL} className="profile_contanier_imatge_src" />
         </div>
-        <div className="profile_contanier_name" >
-          <h1>{user.name}</h1>
-          <h1 className= "user_contanier_locale">{user.locale}</h1>
+        <div className="profile_contanier_name">
+          <h1>{user.displayName}</h1>
+          <h1 className="user_contanier_locale">{user.locale}</h1>
         </div>
-      <h2 className= "user_contanier_email" >{user.email }</h2>
-      <h3>{ 'Wallet: '+ TotalWallet }</h3>
-      
-      
-     
-     {/*  <h1>{user.name}</h1>
-      <h1>{user.locale}</h1>
-      <h1>{user.user_metadata.wallet}</h1>
-      <h1>{user.app_metadata.wallet}</h1> */}
+        <h2 className="user_contanier_email">{user.email}</h2>
+        <h3>{"Wallet: " + TotalWallet}</h3>
+      </div>
     </div>
-  </div>
-    
   );
-  
 }

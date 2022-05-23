@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./components/Navbar";
 import "./App.css";
 import Home from "./components/pages/Home";
@@ -7,11 +7,14 @@ import {
   Switch,
   Route,
   useHistory,
+  useNavigate,
 } from "react-router-dom";
 import Profile from "./components/pages/Profile";
 import SignUp from "./components/pages/SignUp";
 import Games from "./components/pages/Games";
-import { useAuth0, User } from "@auth0/auth0-react";
+
+import { auth } from "./firebase-config";
+
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 
@@ -22,33 +25,26 @@ import SlotMachine from "./components/SlotMachine";
 
 function App() {
   const history = useHistory();
-  const { isAuthenticated } = useAuth0();
 
-  const firebaseConfig = {
-    apiKey: "AIzaSyDVbrZLKrei2XCCaTqA5JE_PmPUETbEbF4",
-    authDomain: "slotmachine-c537c.firebaseapp.com",
-    projectId: "slotmachine-c537c",
-    storageBucket: "slotmachine-c537c.appspot.com",
-    messagingSenderId: "484508762054",
-    appId: "1:484508762054:web:5e9bc1fe013721d8687cc7",
-    measurementId: "G-X07R5E819H",
-  };
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
 
   return (
     <>
       <Router>
-        <Navbar />
+        <Navbar setIsAuth={setIsAuth} />
         <Switch>
-          {isAuthenticated ? (
+          {isAuth ? (
             <Switch>
               <Route path="/" exact component={Home} />
 
               <Route path="/profile" component={Profile} />
               <Route path="/games" component={Games} />
               <Route path="/singup" component={SignUp} />
-              <Route path="/slotmachine" component={SlotMachine} />
+              <Route
+                path="/slotmachine"
+                component={SlotMachine}
+                setIsAuth={setIsAuth}
+              />
             </Switch>
           ) : (
             <Switch>
