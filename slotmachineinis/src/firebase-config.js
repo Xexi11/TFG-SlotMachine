@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -8,6 +9,7 @@ import { getAuth, GoogleAuthProvider } from "firebase/auth";
 const firebaseConfig = {
   apiKey: "AIzaSyDY9XyUwbVgFgg5VY9bwHteJST6_dYMo9o",
   authDomain: "zodiaccasino-83769.firebaseapp.com",
+  databaseURL: "https://zodiaccasino-83769-default-rtdb.firebaseio.com",
   projectId: "zodiaccasino-83769",
   storageBucket: "zodiaccasino-83769.appspot.com",
   messagingSenderId: "944852840270",

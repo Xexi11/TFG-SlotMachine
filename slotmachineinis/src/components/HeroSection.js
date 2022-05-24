@@ -5,19 +5,64 @@ import "./Css/HeroSection.css";
 import { useAuth0, User } from "@auth0/auth0-react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { signInWithPopup } from "firebase/auth";
-import { auth, provider } from "../firebase-config";
+import { auth, db, provider } from "../firebase-config";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { async } from "@firebase/util";
+import { useStateValue } from "../context/StateProvider";
+import { actionTypes } from "../context/reducer";
 
 function HeroSection() {
   const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
+  const [{}, dispatch] = useStateValue();
+
   const inisweb = () => {
     window.location = "https://zodiacblockchainsolutions.com/";
   };
 
   const signInWithGoogle = () => {
-    signInWithPopup(auth, provider).then((result) => {
+    signInWithPopup(auth, provider).then(async (result) => {
+      let userFound = false;
+
       localStorage.setItem("isAuth", true);
+      console.log(result);
       setIsAuth(true);
-      window.location.pathname = "/";
+
+      const q = query(
+        collection(db, "usuarios"),
+        where("firebaseId", "==", result.user.uid)
+      );
+
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        userFound = true;
+      });
+
+      if (userFound) {
+        querySnapshot.forEach((doc) => {
+          userFound = true;
+          dispatch({
+            type: actionTypes.SET_USER,
+            user: { uid: doc.id, data: doc.data() },
+          });
+          console.log(`${doc.id} => ${doc.data()}`);
+        });
+      } else {
+        try {
+          const docRef = await addDoc(collection(db, "usuarios"), {
+            firebaseId: result.user.uid,
+            tokens: 0,
+            walletAddres: "",
+            //Se pueden añadir mas campos -- `prxim
+          });
+          dispatch({
+            type: actionTypes.SET_USER,
+            user: { uid: docRef.id, data: docRef.data() },
+          });
+          console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
+      }
     });
   };
 

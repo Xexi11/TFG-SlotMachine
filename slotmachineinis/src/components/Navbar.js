@@ -2,10 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Button } from "./Button";
 import { Link, useNavigate } from "react-router-dom";
 import "./Css/Navbar.css";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 
-import { auth, provider } from "../firebase-config";
+import { auth, db, provider } from "../firebase-config";
 import { signInWithPopup } from "firebase/auth";
 import { signOut } from "firebase/auth";
+import { useStateValue } from "../context/StateProvider";
+import { actionTypes } from "../context/reducer";
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -13,7 +16,7 @@ function Navbar() {
   const handleClick = () => setClick(!click);
   const closeMobileMenu = () => setClick(false);
 
-  const [isAuth, setIsAuth] = useState(localStorage.getItem("isAuth"));
+  const [{ user, authorized }, dispatch] = useStateValue();
 
   const showButton = () => {
     if (window.innerWidth <= 960) {
@@ -30,25 +33,70 @@ function Navbar() {
   window.addEventListener("resize", showButton);
 
   const signInWithGoogle = () => {
-    signInWithPopup(auth, provider).then((result) => {
+    signInWithPopup(auth, provider).then(async (result) => {
+      let userFound = false;
+
       localStorage.setItem("isAuth", true);
-      setIsAuth(true);
-      window.location.pathname = "/";
+      console.log(result);
+
+      const q = query(
+        collection(db, "usuarios"),
+        where("firebaseId", "==", result.user.uid)
+      );
+
+      const querySnapshot = await getDocs(q);
+      querySnapshot.forEach((doc) => {
+        userFound = true;
+      });
+
+      if (userFound) {
+        querySnapshot.forEach((doc) => {
+          userFound = true;
+          dispatch({
+            type: actionTypes.SET_USER,
+            user: { uid: doc.id, data: doc.data() },
+          });
+          window.localStorage.setItem("firebaseId", result.user.uid);
+          console.log(`${doc.id} => ${doc.data()}`);
+        });
+      } else {
+        try {
+          const docRef = await addDoc(collection(db, "usuarios"), {
+            firebaseId: result.user.uid,
+            tokens: 0,
+            walletAddres: "",
+            //Se pueden añadir mas campos -- `prxim
+          });
+          dispatch({
+            type: actionTypes.SET_USER,
+            user: { uid: docRef.id, data: docRef.data() },
+          });
+          window.localStorage.setItem("firebaseId", result.user.uid);
+
+          console.log("Document written with ID: ", docRef.id);
+        } catch (e) {
+          console.error("Error adding document: ", e);
+        }
+      }
     });
   };
 
   const signUserOut = () => {
-    signOut(auth).then(() => {
-      localStorage.clear();
-      setIsAuth(false);
-      window.location.pathname = "/login";
-    });
+    signOut(auth)
+      .then(() => {
+        window.localStorage.removeItem("firebaseId");
+
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.log("ERROR SING OUT");
+      });
   };
 
   return (
     <>
       <nav className="navbar">
-        {!isAuth ? (
+        {!authorized ? (
           <div className="navbar-container">
             <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
               ZODIAC
@@ -141,14 +189,14 @@ function Navbar() {
                 <Link
                   to="/profile"
                   className="nav-links-mobile"
-                  onClick={(() => signUserOut, closeMobileMenu)}
+                  onClick={(() => signUserOut(), closeMobileMenu)}
                 >
                   Sign Out
                 </Link>
               </li>
             </ul>
             {button && (
-              <Button onClick={() => signUserOut} buttonStyle="btn--outline">
+              <Button onClick={() => signUserOut()} buttonStyle="btn--outline">
                 SIGN OUT
               </Button>
             )}
