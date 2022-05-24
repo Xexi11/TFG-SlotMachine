@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import "../../App.css";
 import "../Css/Profile.css";
+import { Icon } from "@iconify/react";
 
 import { auth, db, provider } from "../../firebase-config";
 import { getAuth } from "firebase/auth";
@@ -11,9 +12,12 @@ import { Button } from "../Button";
 import { ethers } from "ethers";
 
 export default function Profile() {
-  let Wallet = "_wallet";
-
   let TotalTokens = 900;
+
+  const usuarioGoogle = auth.currentUser;
+  const displayName = usuarioGoogle.displayName;
+  const email = usuarioGoogle.email;
+  const photoURL = usuarioGoogle.photoURL;
 
   const [{ user, authorized }, dispatch] = useStateValue();
   console.log(user);
@@ -31,6 +35,7 @@ export default function Profile() {
     const userdata = await setDoc(doc(db, "usuarios", user.uid), {
       ...user.data,
       walletAddres: _wallet,
+      tokens: TotalTokens,
     });
   }
 
@@ -45,16 +50,19 @@ export default function Profile() {
     <div className="profile">
       <div className="profile_contanier">
         <div className="profile_contanier_imatge">
-          <img src={user.photoURL} className="profile_contanier_imatge_src" />
+          <img src={photoURL} className="profile_contanier_imatge_src" />
         </div>
-
-        <div className="profile_contanier_name">
-          <h2>{user.data.firebaseId}</h2>
-          <h1 className="user_contanier_locale">{user.locale}</h1>
+        <div className="div_name_nationality">
+          <h2>{displayName} </h2>
+          <h2 className="user_contanier_locale">{user.data.location}</h2>
         </div>
-        <h2 className="user_contanier_email">{user.email}</h2>
-        <h3>{"Wallet: " + user.data.walletAddres}</h3>
-        <h3>{"Tokens: " + user.data.tokens}</h3>
+        <h2 className="user_contanier_email">{email}</h2>
+        <h4 className="user_contanier_wallet">
+          {"Wallet: " + user.data.walletAddres}
+        </h4>
+        <h3 className="user_contanier_tokens">
+          {"Tokens: " + user.data.tokens}
+        </h3>
         {user.data.walletAddres == "" ? (
           <Button
             onClick={() => connectWalletMetamask()}
@@ -63,7 +71,10 @@ export default function Profile() {
             Connect Wallet Metamask
           </Button>
         ) : (
-          <h3>{"WalletConnected"}</h3>
+          <div className="profile_contanier_imatge_metamask">
+            <Icon icon="logos:metamask-icon" width="40" />
+            <h3>{"MetaMask Connected"}</h3>
+          </div>
         )}
       </div>
     </div>

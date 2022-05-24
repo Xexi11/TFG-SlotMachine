@@ -25,7 +25,6 @@ function HeroSection() {
 
       localStorage.setItem("isAuth", true);
       console.log(result);
-      setIsAuth(true);
 
       const q = query(
         collection(db, "usuarios"),
@@ -44,6 +43,7 @@ function HeroSection() {
             type: actionTypes.SET_USER,
             user: { uid: doc.id, data: doc.data() },
           });
+          window.localStorage.setItem("firebaseId", result.user.uid);
           console.log(`${doc.id} => ${doc.data()}`);
         });
       } else {
@@ -52,12 +52,15 @@ function HeroSection() {
             firebaseId: result.user.uid,
             tokens: 0,
             walletAddres: "",
+            location: "ESP",
             //Se pueden añadir mas campos -- `prxim
           });
           dispatch({
             type: actionTypes.SET_USER,
             user: { uid: docRef.id, data: docRef.data() },
           });
+          window.localStorage.setItem("firebaseId", result.user.uid);
+
           console.log("Document written with ID: ", docRef.id);
         } catch (e) {
           console.error("Error adding document: ", e);

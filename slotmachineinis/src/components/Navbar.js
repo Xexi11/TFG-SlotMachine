@@ -65,6 +65,7 @@ function Navbar() {
             firebaseId: result.user.uid,
             tokens: 0,
             walletAddres: "",
+            location: "ESP",
             //Se pueden añadir mas campos -- `prxim
           });
           dispatch({

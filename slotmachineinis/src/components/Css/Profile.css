@@ -2,7 +2,6 @@
     position: fixed;  
     height: 30rem;
     border: 1px solid black;
-    font-size: 30px;
     width: 30rem;
     color: rgb(31, 30, 30);
     display: flex;
@@ -16,12 +15,14 @@
 
     
 }
-.profile_contanier_name{
+.div_name_nationality{
     display: flex;
-    flex-direction: row ;
-    align-content: space-around;
-    font-size: 26px;
-    font-weight: bolder;
+    width: auto;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 20px;
+    
     
 }
 
@@ -33,10 +34,32 @@
 
 }
 .user_contanier_locale{
+    padding: 20px;
     text-transform: uppercase;
 }
+
 .user_contanier_email{
     font-weight: lighter;
     font-size: 25px;
     margin-bottom: 2rem;
+}
+.user_contanier_wallet{
+    
+    font-weight: lighter;
+    font-size: 16px;
+    margin-bottom: 2rem;
+}
+
+.user_contanier_tokens{
+    font-weight: lighter;
+    font-size: 25px;
+    margin-bottom: 2rem;
+}
+
+.profile_contanier_imatge_metamask{
+    display: flex;
+    gap:20px;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
 }
