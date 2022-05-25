@@ -72,8 +72,14 @@ export default function Profile() {
           </Button>
         ) : (
           <div className="profile_contanier_imatge_metamask">
-            <Icon icon="logos:metamask-icon" width="40" />
-            <h3>{"MetaMask Connected"}</h3>
+            <Icon icon="logos:metamask-icon" width="30" />
+            <h3>{"Connected"}</h3>
+            <Button
+              /*  onClick={() => } */
+              buttonStyle="btn--primary"
+            >
+              Buy Tokens
+            </Button>
           </div>
         )}
       </div>

@@ -67,11 +67,7 @@ function App() {
               <Route path="/profile" component={Profile} />
               <Route path="/games" component={Games} />
               <Route path="/singup" component={SignUp} setIsAuth={setIsAuth} />
-              <Route
-                path="/slotmachine"
-                component={SlotMachine}
-                setIsAuth={setIsAuth}
-              />
+              <Route path="/slotmachine" component={SlotMachine} />
             </Switch>
           ) : (
             <Switch>
