@@ -39,6 +39,9 @@ export default function Profile() {
     });
   }
 
+  function BuyTokensMetamask() {}
+  function ExchangeTokensMetamask() {}
+
   /* 
   const tokensCountRef = ref(db, "tokens/" + user + "/wallet");
   onValue(tokensCountRef, (snapshot) => {
@@ -74,12 +77,20 @@ export default function Profile() {
           <div className="profile_contanier_imatge_metamask">
             <Icon icon="logos:metamask-icon" width="30" />
             <h3>{"Connected"}</h3>
-            <Button
-              /*  onClick={() => } */
-              buttonStyle="btn--primary"
-            >
-              Buy Tokens
-            </Button>
+            <div className="profile_contanier_buttons">
+              <Button
+                /*  onClick={() => } */
+                buttonStyle="btn--primary"
+              >
+                Buy Tokens
+              </Button>
+              <Button
+                /*  onClick={() => } */
+                buttonStyle="btn--primary"
+              >
+                Exchange Tokens
+              </Button>
+            </div>
           </div>
         )}
       </div>

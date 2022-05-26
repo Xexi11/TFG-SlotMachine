@@ -1,8 +1,8 @@
 .profile_contanier{
     position: fixed;  
-    height: 30rem;
+    height: 35rem;
     border: 1px solid black;
-    width: 30rem;
+    width: 35rem;
     color: rgb(31, 30, 30);
     display: flex;
     align-items: center;
@@ -27,7 +27,7 @@
 }
 
 .profile_contanier_imatge_src{
-    max-width: 100%;
+    max-width: 90%;
     border-radius: 1rem;
     height: auto;
     box-shadow: 0 0 15px 10px rgba(28, 30, 31, 0.5);
@@ -58,8 +58,16 @@
 
 .profile_contanier_imatge_metamask{
     display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-direction: column;
+}
+.profile_contanier_buttons{
+    padding: 0.8rem;
+    display: flex;
+    width: auto;
     gap:20px;
     align-items: center;
-    justify-content: space-between;
     flex-direction: row;
+    justify-content: space-around;
 }

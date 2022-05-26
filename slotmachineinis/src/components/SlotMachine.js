@@ -61,15 +61,23 @@ function CalculateSlotValue(position, slotIcon) {
   }
 }
 
+function TokensForUser() {
+  const [{ user, authorized }, dispatch] = useStateValue();
+  console.log(user.data);
+  this.setState({
+    totalWalllet: user.data.tokens,
+  });
+}
 export default class SlotMachine extends React.Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
+    console.log(props);
     this.state = {
       winner: null,
       prize: 0,
-      totalWalllet: 1001,
+      totalWalllet: 5001,
       apuesta: 1,
+      haslost: false,
     };
     this.finishHandler = this.finishHandler.bind(this);
     this.handleClick = this.handleClick.bind(this);
@@ -107,7 +115,7 @@ export default class SlotMachine extends React.Component {
     SlotMachine.matches.push(value);
 
     if (SlotMachine.matches.length === 3) {
-      const { winner, prize, totalWalllet, apuesta, hasplayed } = this.state;
+      const { winner, prize, totalWalllet, apuesta, haslost } = this.state;
       const first = CalculateSlotValue(SlotMachine.matches[0], "");
       const second = CalculateSlotValue(SlotMachine.matches[1], "");
       const third = CalculateSlotValue(SlotMachine.matches[2], "");
@@ -117,7 +125,7 @@ export default class SlotMachine extends React.Component {
       /* console.log(results) */
 
       this.calculateMoneyWallet();
-      this.setState({ winner: results, hasplayed: true });
+      this.setState({ winner: results });
     }
   }
   //Funciones Para Calcular si las columnas son iguales y cual es el premio correspondiente
@@ -232,7 +240,7 @@ export default class SlotMachine extends React.Component {
     }
   }
   betOnSlot(n) {
-    const { winner, prize, totalWalllet, hasplayed, apuesta } = this.state;
+    const { winner, prize, totalWalllet, haslost, apuesta } = this.state;
     console.log(totalWalllet, n);
     const apostar = this.checkApuesta(n);
 
@@ -240,7 +248,7 @@ export default class SlotMachine extends React.Component {
   }
 
   checkApuesta(number) {
-    const { winner, prize, totalWalllet, hasplayed, apuesta } = this.state;
+    const { winner, prize, totalWalllet, haslost, apuesta } = this.state;
     if (totalWalllet <= number) {
       return totalWalllet;
     } else {
@@ -253,11 +261,11 @@ export default class SlotMachine extends React.Component {
   }
 
   render() {
-    const { winner, prize, totalWalllet, apuesta, hasplayed } = this.state;
+    const { winner, prize, totalWalllet, apuesta, haslost } = this.state;
 
     const getLoser = () => {
-      let perdedor;
-      console.log(winner, prize, totalWalllet, apuesta, hasplayed);
+      let perdedor = 0;
+      console.log(winner, prize, totalWalllet, apuesta, haslost);
 
       if (winner === false) {
         return SlotMachine.loser[
@@ -269,6 +277,7 @@ export default class SlotMachine extends React.Component {
     let repeatButton = null;
     let winningSound = null;
     let prizeValue = 0;
+    let losserCount = 0;
 
     prizeValue = prize;
     if (winner !== null) {
@@ -286,7 +295,7 @@ export default class SlotMachine extends React.Component {
           <h1 className="textWinning">
             <span>
               {winner === null
-                ? "Waiting…"
+                ? "Waiting…" + +TokensForUser()
                 : winner
                 ? "🤑 Pure skill! 🤑"
                 : getLoser()}
