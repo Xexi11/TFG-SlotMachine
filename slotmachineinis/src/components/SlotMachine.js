@@ -295,7 +295,7 @@ export default class SlotMachine extends React.Component {
           <h1 className="textWinning">
             <span>
               {winner === null
-                ? "Waiting…" + +TokensForUser()
+                ? "Waiting…" 
                 : winner
                 ? "🤑 Pure skill! 🤑"
                 : getLoser()}
