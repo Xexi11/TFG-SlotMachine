@@ -302,7 +302,7 @@ export default function Slots() {
         <header>Slot Machine</header>
         <div className="indicators">
           <div id="credits">
-            <div>CREDITS</div>
+            <div>TOKENS</div>
             <div>{credits}</div>
           </div>
           <div id="bet">
@@ -329,6 +329,24 @@ export default function Slots() {
             <img src={symbols.thirdSymbol} alt="pulled symbol" width="100" />
           </div>
         </div>
+        <div className="withdraw_container">
+          <button
+            type="button"
+            id="withdraw-tokens"
+            onClick={() => incrementBet()}
+          >
+            Withdraw all Tokens
+            <audio id="bet-up-audio" src={addCreditsAudio} />
+          </button>
+          <button
+            type="button"
+            id={startButtonId}
+            onClick={() => pullCombination()}
+          >
+            START
+            <audio id="spin-symbols-audio" src={spinSymbolsAudio} />
+          </button>
+        </div>
         <div className="buttons">
           <div id="up-buttons">
             <button type="button" id="bet-apuesta" onClick={() => autobet50()}>
@@ -343,8 +361,7 @@ export default function Slots() {
               200
               <audio id="bet-up-audio" src={betUpBetDownAudio} />
             </button>
-          </div>
-          <div id="up-buttons">
+
             <button type="button" id="bet-up" onClick={() => incrementBet()}>
               BET UP
               <audio id="bet-up-audio" src={betUpBetDownAudio} />
@@ -353,14 +370,6 @@ export default function Slots() {
             <button type="button" id="bet-down" onClick={() => decrementBet()}>
               BET DOWN
               <audio id="bet-down-audio" src={betUpBetDownAudio} />
-            </button>
-            <button
-              type="button"
-              id={startButtonId}
-              onClick={() => pullCombination()}
-            >
-              START
-              <audio id="spin-symbols-audio" src={spinSymbolsAudio} />
             </button>
           </div>
         </div>
