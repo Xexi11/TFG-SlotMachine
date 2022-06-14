@@ -75,7 +75,7 @@ export default class SlotMachine extends React.Component {
     this.state = {
       winner: null,
       prize: 0,
-      totalWalllet: 5001,
+      totalWalllet: 901,
       apuesta: 1,
       haslost: false,
     };
@@ -295,7 +295,7 @@ export default class SlotMachine extends React.Component {
           <h1 className="textWinning">
             <span>
               {winner === null
-                ? "Waiting…" 
+                ? "Waiting… ⏱"
                 : winner
                 ? "🤑 Pure skill! 🤑"
                 : getLoser()}

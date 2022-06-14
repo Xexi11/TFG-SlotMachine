@@ -26,6 +26,7 @@ import { useStateValue } from "./context/StateProvider";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { actionTypes } from "./context/reducer";
 import { getAuth } from "firebase/auth";
+import Slots from "./components/Slots";
 
 function App() {
   const history = useHistory();
@@ -67,7 +68,7 @@ function App() {
               <Route path="/profile" component={Profile} />
               <Route path="/games" component={Games} />
               <Route path="/singup" component={SignUp} setIsAuth={setIsAuth} />
-              <Route path="/slotmachine" component={SlotMachine} />
+              <Route path="/slotmachine" component={Slots} />
             </Switch>
           ) : (
             <Switch>
