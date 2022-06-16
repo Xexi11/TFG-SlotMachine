@@ -7,12 +7,20 @@ export const initialState = {
 
 export const actionTypes = {
   SET_USER: "SET_USER",
+  SET_COINS_USER: "SET_COINS_USER",
   LOGOUT_USER: "LOGOUT_USER",
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case actionTypes.SET_USER:
+      return {
+        ...state,
+        user: action.user,
+        authorized: true,
+      };
+
+    case actionTypes.SET_COINS_USER:
       return {
         ...state,
         user: action.user,

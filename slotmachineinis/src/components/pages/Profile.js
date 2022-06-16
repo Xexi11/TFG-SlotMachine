@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "../../App.css";
 import "../Css/Profile.css";
 import { Icon } from "@iconify/react";
@@ -21,8 +21,14 @@ export default function Profile() {
 
   const [{ user, authorized }, dispatch] = useStateValue();
   console.log(user);
+  const [credits, setCredits] = useState(user.data.tokens);
   /*   const auth = getAuth();
   const user = auth.currentUser; */
+
+  /* INTENTAR que se vaya actualizando el Credits */
+  useEffect(() => {
+    setCredits(user.data.tokens);
+  }, []);
 
   async function connectWalletMetamask() {
     const prov = new ethers.providers.Web3Provider(window.ethereum);
@@ -63,9 +69,7 @@ export default function Profile() {
         <h4 className="user_contanier_wallet">
           {"Wallet: " + user.data.walletAddres}
         </h4>
-        <h3 className="user_contanier_tokens">
-          {"Tokens: " + user.data.tokens}
-        </h3>
+        <h3 className="user_contanier_tokens">{"Tokens: " + credits}</h3>
         {user.data.walletAddres == "" ? (
           <Button
             onClick={() => connectWalletMetamask()}

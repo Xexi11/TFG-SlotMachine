@@ -1,6 +1,9 @@
+import { doc, setDoc } from "firebase/firestore";
 import React from "react";
 import { useState, useCallback, useEffect } from "react";
+import { actionTypes } from "../context/reducer";
 import { useStateValue } from "../context/StateProvider";
+import { db } from "../firebase-config";
 import "./Css/Slots.css";
 
 export default function Slots() {
@@ -135,6 +138,25 @@ export default function Slots() {
       let betUpAudioId = document.getElementById("bet-up-audio");
       if (bet < 200) {
         bet < 9 ? setBet(`0${Number(bet) + 5}`) : setBet(Number(bet) + 5);
+        betUpAudioId.play();
+      }
+    }
+  }, [bet, readyStart]);
+
+  const withdrawAllTokens = useCallback(() => {
+    if (readyStart) {
+      // prevent to click before pull the combination (if Start button is clicked)
+      let betUpAudioId = document.getElementById("bet-up-audio");
+      let tokens_user = credits + winPoints;
+      console.log(tokens_user);
+      if (tokens_user > 0) {
+        const userdata = setDoc(doc(db, "usuarios", user.uid), {
+          ...user.data,
+          tokens: tokens_user,
+        });
+        let white_text = " ";
+        var retiradaText = "" + tokens_user + white_text + "Witdrawn";
+        setscrollWords(retiradaText);
         betUpAudioId.play();
       }
     }
@@ -333,7 +355,7 @@ export default function Slots() {
           <button
             type="button"
             id="withdraw-tokens"
-            onClick={() => incrementBet()}
+            onClick={() => withdrawAllTokens()}
           >
             Withdraw all Tokens
             <audio id="bet-up-audio" src={addCreditsAudio} />
