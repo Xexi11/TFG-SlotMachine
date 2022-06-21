@@ -147,3 +147,14 @@ h1 {
 
 
 
+@media (max-width: 1200px) {
+  body {
+    transform: scale(0.7);
+  }
+}
+
+@media (max-heigth: 1000px) {
+  body {
+    transform: scale(0.7);
+  }
+}
