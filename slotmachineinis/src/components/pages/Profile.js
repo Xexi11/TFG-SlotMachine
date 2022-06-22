@@ -29,6 +29,7 @@ export default function Profile() {
   const [credits, setCredits] = useState(user.data.tokens);
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
+
   /*   const auth = getAuth();
   const user = auth.currentUser; */
 
@@ -53,10 +54,12 @@ export default function Profile() {
     });
   }
 
-
-  function BuyTokensMetamask() {
-    
-  }
+  
+  const BuyTokensMetamask = async () => {
+      const prov = new ethers.Contract();
+      let instance = await Casino.deployed()
+      let buy_tokens = await web3.eth.buyTokens()
+     }
   function ExchangeTokensMetamask() {}
 
   /* 
@@ -124,7 +127,7 @@ export default function Profile() {
                   <DialogTitle id="alert-dialog-title_buytokens">
                     {"How many tokens you buy?"}
                   </DialogTitle>
-                  <DialogContent>
+                  <DialogContent id="dialog-contenidor">
                     <DialogContentText id="alert-dialog-description_buytokens">
                       Enter the number of tokens you want.
                     </DialogContentText>

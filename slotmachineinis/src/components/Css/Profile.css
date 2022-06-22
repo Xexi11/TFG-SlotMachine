@@ -71,3 +71,9 @@
     flex-direction: row;
     justify-content: space-around;
 }
+
+.dialog-contenidor{
+    display: flex  !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
