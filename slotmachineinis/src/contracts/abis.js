@@ -1,1 +1,1 @@
-export const casino_abis = ""
+export const casino_abis = [];

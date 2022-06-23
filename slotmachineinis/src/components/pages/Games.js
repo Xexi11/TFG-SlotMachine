@@ -6,7 +6,6 @@ export default function Games() {
   return(
     <div className='games'>
         <Cards />
-      
       </div>
    
    );

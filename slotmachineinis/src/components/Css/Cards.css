@@ -1,7 +1,12 @@
+
 .cards {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
   border:3px solid black;
   background: #fff;
-  height: fit-content;
+
+  height: 600px;
   border-radius: 5%;
   overflow-y: hidden;
   
@@ -145,7 +150,11 @@ h1 {
   }
 }
 
-
+@media (max-width: 1500px) {
+  body {
+    transform: scale(0.7);
+  }
+}
 
 @media (max-width: 1200px) {
   body {
@@ -153,7 +162,7 @@ h1 {
   }
 }
 
-@media (max-heigth: 1000px) {
+@media (max-widht: 1000px) {
   body {
     transform: scale(0.7);
   }

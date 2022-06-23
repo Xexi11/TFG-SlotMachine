@@ -1,18 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./Css/SlotMachine.css";
 import Button_Mui from "@mui/material/Button";
 import { Button } from "./Button";
 
-import {
-  doc,
-  addDoc,
-  collection,
-  getDocs,
-  query,
-  where,
-  getDoc,
-} from "firebase/firestore";
-import { auth, db, provider } from "../firebase-config";
 import { useStateValue } from "../context/StateProvider";
 
 function RepeatButton(props) {
@@ -61,13 +51,6 @@ function CalculateSlotValue(position, slotIcon) {
   }
 }
 
-function TokensForUser() {
-  const [{ user, authorized }, dispatch] = useStateValue();
-  console.log(user.data);
-  this.setState({
-    totalWalllet: user.data.tokens,
-  });
-}
 export default class SlotMachine extends React.Component {
   constructor(props) {
     super(props);
@@ -228,7 +211,7 @@ export default class SlotMachine extends React.Component {
     }
   }
   calculateMoneyWallet() {
-    const { winner, prize, totalWalllet, apuesta } = this.state;
+    const { prize, totalWalllet, apuesta } = this.state;
     let premio = prize;
     let wallet = totalWalllet;
     if (premio !== 0) {
@@ -240,7 +223,7 @@ export default class SlotMachine extends React.Component {
     }
   }
   betOnSlot(n) {
-    const { winner, prize, totalWalllet, haslost, apuesta } = this.state;
+    const { totalWalllet } = this.state;
     console.log(totalWalllet, n);
     const apostar = this.checkApuesta(n);
 
@@ -248,7 +231,7 @@ export default class SlotMachine extends React.Component {
   }
 
   checkApuesta(number) {
-    const { winner, prize, totalWalllet, haslost, apuesta } = this.state;
+    const { totalWalllet } = this.state;
     if (totalWalllet <= number) {
       return totalWalllet;
     } else {
@@ -264,7 +247,6 @@ export default class SlotMachine extends React.Component {
     const { winner, prize, totalWalllet, apuesta, haslost } = this.state;
 
     const getLoser = () => {
-      let perdedor = 0;
       console.log(winner, prize, totalWalllet, apuesta, haslost);
 
       if (winner === false) {
@@ -277,7 +259,6 @@ export default class SlotMachine extends React.Component {
     let repeatButton = null;
     let winningSound = null;
     let prizeValue = 0;
-    let losserCount = 0;
 
     prizeValue = prize;
     if (winner !== null) {
@@ -480,7 +461,7 @@ class Spinner extends React.Component {
   }
 
   render() {
-    let { position, current } = this.state;
+    let { position } = this.state;
 
     return (
       <div

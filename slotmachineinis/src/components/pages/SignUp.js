@@ -1,4 +1,3 @@
-import { useAuth0 } from "@auth0/auth0-react";
 import React from "react";
 import { Button } from "../Button";
 import "../Css/SingUp.css";
@@ -6,12 +5,11 @@ import "../../App.css";
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { auth, db, provider } from "../../firebase-config";
 import { signInWithPopup } from "firebase/auth";
-import { signOut } from "firebase/auth";
 import { useStateValue } from "../../context/StateProvider";
 import { actionTypes } from "../../context/reducer";
 
 export default function SignUp({}) {
-  const [{ user, authorized }, dispatch] = useStateValue();
+  const [, dispatch] = useStateValue();
 
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider).then(async (result) => {

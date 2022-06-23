@@ -15,16 +15,16 @@
   height: 90vh;
   align-items: center;
   justify-content: center;
- 
   overflow-y: hidden;
 }
 
 
 .games {
   overflow-y: hidden;
+  display: center;
   background-image: url('/images/vegas.jpg');
   background-position: center;
-  height: 89vh;
+  height: auto;
   background-size: 100%;
   background-repeat: no-repeat;
   color: rgb(0, 0, 0);

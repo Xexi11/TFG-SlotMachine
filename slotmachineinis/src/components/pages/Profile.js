@@ -34,6 +34,7 @@ export default function Profile() {
   const user = auth.currentUser; */
 
   /* INTENTAR que se vaya actualizando el Credits */
+  
   useEffect(() => {
     setCredits(user.data.tokens);
   }, []);
@@ -54,12 +55,14 @@ export default function Profile() {
     });
   }
 
-  
+/*   
   const BuyTokensMetamask = async () => {
       const prov = new ethers.Contract();
       let instance = await Casino.deployed()
       let buy_tokens = await web3.eth.buyTokens()
-     }
+     } */
+
+
   function ExchangeTokensMetamask() {}
 
   /* 

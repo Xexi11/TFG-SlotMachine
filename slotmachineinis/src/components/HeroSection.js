@@ -2,12 +2,9 @@ import React, { useState } from "react";
 import "../App.css";
 import { Button } from "./Button";
 import "./Css/HeroSection.css";
-import { useAuth0, User } from "@auth0/auth0-react";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import { signInWithPopup } from "firebase/auth";
 import { auth, db, provider } from "../firebase-config";
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
-import { async } from "@firebase/util";
 import { useStateValue } from "../context/StateProvider";
 import { actionTypes } from "../context/reducer";
 
@@ -32,7 +29,7 @@ function HeroSection() {
       );
 
       const querySnapshot = await getDocs(q);
-      querySnapshot.forEach((doc) => {
+      querySnapshot.forEach(() => {
         userFound = true;
       });
 
