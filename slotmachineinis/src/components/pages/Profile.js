@@ -86,7 +86,20 @@ export default function Profile() {
   const handleClose_exchange = () => {
     setOpen2(false);
   };
-
+  
+  const shortWallet = (wallet, slicer) => {
+    if (slicer) {
+      return `${wallet.slice(0, slicer)}...${wallet.slice(
+        wallet.length - slicer,
+        wallet.length
+      )}`;
+    } else {
+      return `${wallet.slice(0, 8)}...${wallet.slice(
+        wallet.length - 8,
+        wallet.length
+      )}`;
+    }
+  };
 
   return (
     <div className="profile">
@@ -100,7 +113,8 @@ export default function Profile() {
         </div>
         <h2 className="user_contanier_email">{email}</h2>
         <h4 className="user_contanier_wallet">
-          {"Wallet: " + user.data.walletAddres}
+          
+          {"Wallet: " + shortWallet(user.data.walletAddres)}
         </h4>
         <h3 className="user_contanier_tokens">{"Tokens: " + credits}</h3>
         {user.data.walletAddres == "" ? (

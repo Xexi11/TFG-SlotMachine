@@ -14,7 +14,7 @@ function Footer() {
     window.location = "https://www.tiktok.com/@zodiacblockchainsolution"
   }
   const LinkedIn = () =>{
-    window.location = "https://zodiacblockchainsolutions.com/"
+    window.location = "https://www.linkedin.com/company/zodiac-blockchain-solutionss/"
   }
 
   return (
@@ -30,13 +30,13 @@ function Footer() {
           <div class='footer-link-items'>
             <h2>About Us</h2>
             <Link to='/games'>How it works</Link>
-            <Link onClick={inisWeb}>Investors</Link>
+            <Link onClick={LinkedIn}>Investors</Link>
             <Link to='/'>Terms of Service</Link> {/* Onclick poner unos terminos y condicios (paginas por internet) */}
           </div>
           <div class='footer-link-items'>
             <h2>Contact Us</h2>
-            <Link onClick={inisWeb}>Contact</Link>
-            <Link onClick={inisWeb}>Support</Link>
+            <Link onClick={LinkedIn}>Contact</Link>
+            <Link onClick={LinkedIn}>Support</Link>
           </div>
         </div>
         <div className='footer-link-wrapper'>
@@ -44,7 +44,7 @@ function Footer() {
             <h2>Social Media</h2>
             <Link
               class='social-icon-link linkedin'
-              /* onClick={ } Falta redirigir a Linkedin */
+              onClick={ LinkedIn}
               target='_blank'
               aria-label='LinkedIn'
             >
@@ -78,7 +78,7 @@ function Footer() {
             <img class='navbar-icon' src='/images/gemini.png'/>{/*  La imagen no es cuadrada */}
             </Link>
           </div>
-          <small class='website-rights'>Sergi Alsina 2021</small>
+          <small class='website-rights'>Sergi Alsina 2022</small>
         </div>
       </section>
     </div>

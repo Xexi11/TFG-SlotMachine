@@ -15,6 +15,9 @@ function HeroSection() {
   const inisweb = () => {
     window.location = "https://zodiacblockchainsolutions.com/";
   };
+  const LinkedIn = () =>{
+    window.location = "https://www.linkedin.com/company/zodiac-blockchain-solutionss/"
+  }
 
   const signInWithGoogle = () => {
     signInWithPopup(auth, provider).then(async (result) => {
@@ -84,7 +87,7 @@ function HeroSection() {
           className="btns"
           buttonStyle="btn--primary"
           buttonSize="btn--large"
-          onClick={() => inisweb()}
+          onClick={() => LinkedIn()}
         >
           MORE INFO <i className="far fa-play-circle" />{" "}
           {/* Poner informacion de Geminis o de la el juego */}
