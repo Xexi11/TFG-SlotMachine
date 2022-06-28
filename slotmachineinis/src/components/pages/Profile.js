@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import "../../App.css";
 import "../Css/Profile.css";
 import { Icon } from "@iconify/react";
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
 import { auth, db, provider } from "../../firebase-config";
 import { getAuth } from "firebase/auth";
 import { getDatabase, set, ref, onValue, child, get } from "firebase/database";
@@ -34,11 +34,10 @@ export default function Profile() {
   const user = auth.currentUser; */
 
   /* INTENTAR que se vaya actualizando el Credits */
-  
+
   useEffect(() => {
     setCredits(user.data.tokens);
   }, []);
-  
 
   async function connectWalletMetamask() {
     const prov = new ethers.providers.Web3Provider(window.ethereum);
@@ -55,13 +54,12 @@ export default function Profile() {
     });
   }
 
-/*   
+  /*   
   const BuyTokensMetamask = async () => {
       const prov = new ethers.Contract();
       let instance = await Casino.deployed()
       let buy_tokens = await web3.eth.buyTokens()
      } */
-
 
   function ExchangeTokensMetamask() {}
 
@@ -86,7 +84,7 @@ export default function Profile() {
   const handleClose_exchange = () => {
     setOpen2(false);
   };
-  
+
   const shortWallet = (wallet, slicer) => {
     if (slicer) {
       return `${wallet.slice(0, slicer)}...${wallet.slice(
@@ -113,10 +111,11 @@ export default function Profile() {
         </div>
         <h2 className="user_contanier_email">{email}</h2>
         <h4 className="user_contanier_wallet">
-          
           {"Wallet: " + shortWallet(user.data.walletAddres)}
         </h4>
-        <h3 className="user_contanier_tokens">{"Tokens: " + credits}</h3>
+        <h3 className="user_contanier_tokens">
+          {"Tokens: " + credits} <Icon icon="clarity:coin-bag-solid" />
+        </h3>
         {user.data.walletAddres == "" ? (
           <Button
             onClick={() => connectWalletMetamask()}
@@ -130,66 +129,66 @@ export default function Profile() {
             <h3>{"Connected"}</h3>
             <div className="profile_contanier_buttons">
               <Button
-                onClick={() =>  handleClickOpen() }
+                onClick={() => handleClickOpen()}
                 buttonStyle="btn--primary"
               >
                 Buy Tokens
               </Button>
               <Dialog
-                  open={open}
-                  onClose={handleClose}
-                  aria-labelledby="alert-dialog-title_buytokens"
-                  aria-describedby="alert-dialog-description_buytokens"
-                >
-                  <DialogTitle id="alert-dialog-title_buytokens">
-                    {"How many tokens you buy?"}
-                  </DialogTitle>
-                  <DialogContent id="dialog-contenidor">
-                    <DialogContentText id="alert-dialog-description_buytokens">
-                      Enter the number of tokens you want.
-                    </DialogContentText>
-                    <TextField
-                        id="outlined-password-input"
-                        label="Tokens"
-                        type="number"
-                      />
-                  </DialogContent>
-                  <DialogActions>
-                    <Button onClick={handleClose}>Close</Button>
-                    <Button onClick={handleClose} autoFocus>
-                      Buy
-                    </Button>
-                  </DialogActions>
-                </Dialog>
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="alert-dialog-title_buytokens"
+                aria-describedby="alert-dialog-description_buytokens"
+              >
+                <DialogTitle id="alert-dialog-title_buytokens">
+                  {"How many tokens you buy?"}
+                </DialogTitle>
+                <DialogContent id="dialog-contenidor">
+                  <DialogContentText id="alert-dialog-description_buytokens">
+                    Enter the number of tokens you want.
+                  </DialogContentText>
+                  <TextField
+                    id="outlined-password-input"
+                    label="Tokens"
+                    type="number"
+                  />
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleClose}>Close</Button>
+                  <Button onClick={handleClose} autoFocus>
+                    Buy
+                  </Button>
+                </DialogActions>
+              </Dialog>
 
               <Button
-                onClick={() =>handleClickOpen_exchange() } 
+                onClick={() => handleClickOpen_exchange()}
                 buttonStyle="btn--primary"
               >
                 Exchange Tokens
               </Button>
               <Dialog
-                  open={open2}
-                  onClose={handleClose_exchange}
-                  aria-labelledby="alert-dialog-title_buytokens"
-                  aria-describedby="alert-dialog-description_buytokens"
-                >
-                  <DialogTitle id="alert-dialog-title_buytokens">
-                    {"Withdraw all the tokens?"}
-                  </DialogTitle>
-                  <DialogContent>
-                    <DialogContentText id="alert-dialog-description_buytokens">
-                      Are you sure to Withdraw all the Zodiac Tokens. Once done you will have all the coins in Phantom Tokens.
-                    </DialogContentText>
-                  </DialogContent>
-                  <DialogActions>
-                    <Button onClick={handleClose_exchange}>Close</Button>
-                    <Button onClick={handleClose_exchange} autoFocus>
-                      Withdraw
-                    </Button>
-                  </DialogActions>
-                </Dialog>
-
+                open={open2}
+                onClose={handleClose_exchange}
+                aria-labelledby="alert-dialog-title_buytokens"
+                aria-describedby="alert-dialog-description_buytokens"
+              >
+                <DialogTitle id="alert-dialog-title_buytokens">
+                  {"Withdraw all the tokens?"}
+                </DialogTitle>
+                <DialogContent>
+                  <DialogContentText id="alert-dialog-description_buytokens">
+                    Are you sure to Withdraw all the Zodiac Tokens. Once done
+                    you will have all the coins in Phantom Tokens.
+                  </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                  <Button onClick={handleClose_exchange}>Close</Button>
+                  <Button onClick={handleClose_exchange} autoFocus>
+                    Withdraw
+                  </Button>
+                </DialogActions>
+              </Dialog>
             </div>
           </div>
         )}

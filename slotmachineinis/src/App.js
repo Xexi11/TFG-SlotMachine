@@ -7,25 +7,18 @@ import {
   Switch,
   Route,
   useHistory,
-  useNavigate,
 } from "react-router-dom";
 import Profile from "./components/pages/Profile";
 import SignUp from "./components/pages/SignUp";
 import Games from "./components/pages/Games";
 
-import { auth, db } from "./firebase-config";
-
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
+import { db } from "./firebase-config";
 
 import { useEffect } from "react";
 
-import SlotMachine_Page from "./components/pages/SlotMachine_Page";
-import SlotMachine from "./components/SlotMachine";
 import { useStateValue } from "./context/StateProvider";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { actionTypes } from "./context/reducer";
-import { getAuth } from "firebase/auth";
 import Slots from "./components/Slots";
 
 function App() {

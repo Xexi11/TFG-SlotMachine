@@ -54,6 +54,11 @@
     font-weight: lighter;
     font-size: 25px;
     margin-bottom: 2rem;
+    display: flex;
+    gap:5px;
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
 }
 
 .profile_contanier_imatge_metamask{
