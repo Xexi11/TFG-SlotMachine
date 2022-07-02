@@ -15,6 +15,7 @@ import { doc, setDoc } from "firebase/firestore";
 import { Button } from "../Button";
 import { ethers } from "ethers";
 import { TextField } from "@mui/material";
+import { useCasino } from "../../contracts/useCasino";
 
 export default function Profile() {
   let TotalTokens = 900;
@@ -23,12 +24,13 @@ export default function Profile() {
   const displayName = usuarioGoogle.displayName;
   const email = usuarioGoogle.email;
   const photoURL = usuarioGoogle.photoURL;
-
+  const [tokens, setTokens] = useState(0);
   const [{ user, authorized }, dispatch] = useStateValue();
   console.log(user);
   const [credits, setCredits] = useState(user.data.tokens);
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
+  const { takeTokens, withdrawTokens } = useCasino();
 
   /*   const auth = getAuth();
   const user = auth.currentUser; */
@@ -36,7 +38,7 @@ export default function Profile() {
   /* INTENTAR que se vaya actualizando el Credits */
 
   useEffect(() => {
-    setCredits(user.data.tokens);
+    //cridar al firebase
   }, []);
 
   async function connectWalletMetamask() {
@@ -54,14 +56,18 @@ export default function Profile() {
     });
   }
 
-  /*   
-  const BuyTokensMetamask = async () => {
-      const prov = new ethers.Contract();
-      let instance = await Casino.deployed()
-      let buy_tokens = await web3.eth.buyTokens()
-     } */
+  //FUNCION DE COMPRAR TOKENS  y luego meterlos en la BDD
 
-  function ExchangeTokensMetamask() {}
+  async function BuyTokensMetamask() {
+    await takeTokens(tokens);
+    //Firebase actualizar els tokens
+    // sumar los tokens que ya teniamos (credits + tokens)
+  }
+
+  // CUANDO RETIREMOS TODOS LOS TOKENS PRIMERO SE MIRA EN BDD y luego los sacamos todos
+  async function ExchangeTokensMetamask() {
+    await withdrawTokens(100);
+  }
 
   /* 
   const tokensCountRef = ref(db, "tokens/" + user + "/wallet");
@@ -149,15 +155,15 @@ export default function Profile() {
                   </DialogContentText>
                   <TextField
                     id="outlined-password-input"
+                    value={tokens}
                     label="Tokens"
+                    onChange={(e) => setTokens(e.target.value)}
                     type="number"
                   />
                 </DialogContent>
                 <DialogActions>
                   <Button onClick={handleClose}>Close</Button>
-                  <Button onClick={handleClose} autoFocus>
-                    Buy
-                  </Button>
+                  <Button onClick={BuyTokensMetamask}>Buy</Button>
                 </DialogActions>
               </Dialog>
 
@@ -184,7 +190,7 @@ export default function Profile() {
                 </DialogContent>
                 <DialogActions>
                   <Button onClick={handleClose_exchange}>Close</Button>
-                  <Button onClick={handleClose_exchange} autoFocus>
+                  <Button onClick={ExchangeTokensMetamask} autoFocus>
                     Withdraw
                   </Button>
                 </DialogActions>
