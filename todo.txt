@@ -1,12 +1,5 @@
-HomePage: 
+FRONTEND DE LA PAGINA {homepage }
 
+SOLUCIONAR EL WITHDRAW TOKENS
 
-    Fotter
-        -Faltan 2 links (Terms of Service y Linkedin)
-
-    
-
-
-SlotMachine
-
-    Hacer X2 x3
+cambiar la url
