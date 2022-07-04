@@ -23,8 +23,10 @@ const reducer = (state, action) => {
     case actionTypes.SET_COINS_USER:
       return {
         ...state,
-        user: action.user,
-        authorized: true,
+        user: {
+          ...state.user,
+          data: { ...state.user.data, tokens: action.tokens },
+        },
       };
 
     case actionTypes.LOGOUT_USER:

@@ -22,7 +22,7 @@ function Footer() {
     <div className="footer-container">
       <section className="footer-subscription">
         <p className="footer-subscription-heading">
-          Join the Family and receive our best reward
+          More infor about us and our team
         </p>
 
         <div class="footer-links">

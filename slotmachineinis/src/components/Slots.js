@@ -143,17 +143,24 @@ export default function Slots() {
     }
   }, [bet, readyStart]);
 
-  const withdrawAllTokens = useCallback(() => {
+  const withdrawAllTokens = useCallback(async () => {
     if (readyStart) {
       // prevent to click before pull the combination (if Start button is clicked)
       let betUpAudioId = document.getElementById("bet-up-audio");
       let tokens_user = credits + winPoints;
       console.log(tokens_user);
       if (tokens_user > 0) {
-        const userdata = setDoc(doc(db, "usuarios", user.uid), {
+        const userdata = await setDoc(doc(db, "usuarios", user.uid), {
           ...user.data,
           tokens: tokens_user,
         });
+        console.log(userdata);
+
+        dispatch({
+          type: actionTypes.SET_COINS_USER,
+          tokens: tokens_user,
+        });
+
         let white_text = " ";
         var retiradaText = "" + tokens_user + white_text + "Witdrawn";
         setscrollWords(retiradaText);

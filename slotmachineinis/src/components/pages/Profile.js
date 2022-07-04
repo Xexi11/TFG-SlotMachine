@@ -8,17 +8,17 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import { auth, db, provider } from "../../firebase-config";
-import { getAuth } from "firebase/auth";
+import { getAuth, updateProfile } from "firebase/auth";
 import { getDatabase, set, ref, onValue, child, get } from "firebase/database";
 import { useStateValue } from "../../context/StateProvider";
-import { doc, setDoc } from "firebase/firestore";
+import { doc, getDoc, setDoc } from "firebase/firestore";
 import { Button } from "../Button";
 import { ethers } from "ethers";
 import { TextField } from "@mui/material";
 import { useCasino } from "../../contracts/useCasino";
 
 export default function Profile() {
-  let TotalTokens = 900;
+  let TotalTokens = 0;
 
   const usuarioGoogle = auth.currentUser;
   const displayName = usuarioGoogle.displayName;
@@ -26,14 +26,11 @@ export default function Profile() {
   const photoURL = usuarioGoogle.photoURL;
   const [tokens, setTokens] = useState(0);
   const [{ user, authorized }, dispatch] = useStateValue();
-  console.log(user);
+  // console.log(user);
   const [credits, setCredits] = useState(user.data.tokens);
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
   const { takeTokens, withdrawTokens } = useCasino();
-
-  /*   const auth = getAuth();
-  const user = auth.currentUser; */
 
   /* INTENTAR que se vaya actualizando el Credits */
 
@@ -54,28 +51,36 @@ export default function Profile() {
       walletAddres: _wallet,
       tokens: TotalTokens,
     });
+
+    window.location.reload();
   }
 
   //FUNCION DE COMPRAR TOKENS  y luego meterlos en la BDD
-
   async function BuyTokensMetamask() {
     await takeTokens(tokens);
+
+    let buyCredits = parseFloat(tokens) + parseFloat(credits);
+    const userdata = await setDoc(doc(db, "usuarios", user.uid), {
+      ...user.data,
+      tokens: buyCredits,
+    });
+    handleClose();
+    window.location.reload();
     //Firebase actualizar els tokens
-    // sumar los tokens que ya teniamos (credits + tokens)
   }
 
   // CUANDO RETIREMOS TODOS LOS TOKENS PRIMERO SE MIRA EN BDD y luego los sacamos todos
   async function ExchangeTokensMetamask() {
-    await withdrawTokens(100);
+    await withdrawTokens(tokens);
+    let tokens_restantes = parseFloat(credits) - parseFloat(tokens);
+    const userdata = await setDoc(doc(db, "usuarios", user.uid), {
+      ...user.data,
+      tokens: tokens_restantes,
+    });
+    handleClose_exchange();
+    window.location.reload();
   }
 
-  /* 
-  const tokensCountRef = ref(db, "tokens/" + user + "/wallet");
-  onValue(tokensCountRef, (snapshot) => {
-    const data = snapshot.val();
-    updatetokensCountRef(postElement, data);
-  });
- */
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -112,7 +117,7 @@ export default function Profile() {
           <img src={photoURL} className="profile_contanier_imatge_src" />
         </div>
         <div className="div_name_nationality">
-          <h2>{displayName} </h2>
+          <h2>{usuarioGoogle.displayName} </h2>
           <h2 className="user_contanier_locale">{user.data.location}</h2>
         </div>
         <h2 className="user_contanier_email">{email}</h2>
@@ -180,13 +185,20 @@ export default function Profile() {
                 aria-describedby="alert-dialog-description_buytokens"
               >
                 <DialogTitle id="alert-dialog-title_buytokens">
-                  {"Withdraw all the tokens?"}
+                  {"Exchange your tokens?"}
                 </DialogTitle>
                 <DialogContent>
                   <DialogContentText id="alert-dialog-description_buytokens">
-                    Are you sure to Withdraw all the Zodiac Tokens. Once done
-                    you will have all the coins in Phantom Tokens.
+                    How many Zodiac Tokens you want to exchange?. <br /> Once
+                    done you will have all the coins in Phantom Tokens.
                   </DialogContentText>
+                  <TextField
+                    id="outlined-password-input"
+                    value={tokens}
+                    label="Tokens"
+                    onChange={(e) => setTokens(e.target.value)}
+                    type="number"
+                  />
                 </DialogContent>
                 <DialogActions>
                   <Button onClick={handleClose_exchange}>Close</Button>

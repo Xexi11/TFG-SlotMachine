@@ -78,6 +78,11 @@ export const casino_abis = [
     type: "function",
   },
   {
+    stateMutability: "payable",
+    type: "receive",
+    payable: true,
+  },
+  {
     inputs: [
       {
         internalType: "uint256",

@@ -1,35 +1,32 @@
 import React from "react";
 import "./Css/bannerInfo.css";
-import CardItem from "./CardItem";
+import { Icon } from "@iconify/react";
 import CardInfo from "./CardInfo";
 
 function Info_web() {
   return (
     <div className="bannerinfo">
       <div className="info-header">
-        <p className="info-header">Discover and play on our magnific games</p>
+        <p className="info-header">
+          {" "}
+          <h1>Discover and play on our magnific games</h1>
+        </p>
       </div>
       <div class="info-body">
         <CardInfo
-          title="COME AND PLAY"
-          text="Register and join in a big community"
+          title="Join To the Family"
+          text="Register and join in a big community and explore our new games. "
+          src="images/join_family.png"
         />
-        <CardItem
-          src="images/poker.jpg"
-          text="Register and join in a big community"
-          label="RE"
-          path="/games"
+        <CardInfo
+          title="Play and win incredible reward"
+          text="Incredible rewards and prizes, 200 news prizes will be won every month."
+          src="images/fichaCasino.png"
         />
-        <CardItem
-          src="images/poker.jpg"
-          label="RE"
-          text="Play and enjoy of our games"
-        />
-        <CardItem
-          src="images/poker.jpg"
-          text="More that 100 tables to play"
-          label="Poker"
-          path="/games"
+        <CardInfo
+          title="Responsable Gaming"
+          text="Learn all about responsable gaming and advices."
+          src="images/responsibility.png"
         />
       </div>
     </div>

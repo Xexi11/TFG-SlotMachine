@@ -1,1 +1,1 @@
-export const casino_addres = "0x97D8b61F854D013DB04Bc91633B0cFAd7E5666C1";
+export const casino_addres = "0x9E354263497c1d6C269715C5DD34b68b915Cd3FF";

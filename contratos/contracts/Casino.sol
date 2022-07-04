@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 
 
-//0x97D8b61F854D013DB04Bc91633B0cFAd7E5666C1
+//0x9E354263497c1d6C269715C5DD34b68b915Cd3FF
 pragma solidity >=0.4.22 <0.9.0;
 import "@openzeppelin/contracts/access/Ownable.sol";
 
@@ -15,6 +15,9 @@ contract Casino is Ownable {
   //Acabar de hacer la comprovacion del phantom_prize 
 
   mapping(address => uint256) public address_Register;
+
+  receive() external payable {
+  }
 
   function buyTokens (uint256 tokens_Number) public payable returns(uint256) {
     //Comprovar el token number y precio del Phantom es correcto

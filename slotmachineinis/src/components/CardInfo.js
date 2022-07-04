@@ -1,34 +1,25 @@
 import React from "react";
-
+import "./Css/CardInfo.css";
 import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-  >
-    •
-  </Box>
-);
 
 function CardInfo(props) {
   return (
-    <Card>
-      <CardContent>
-        <Typography color="text.secondary" gutterBottom>
-          {props.title}
-        </Typography>
-        <Typography variant="body2">{props.text}</Typography>
-      </CardContent>
-      <CardActions>
+    <div className="CardInfo_container">
+      <div className="CardInfo_imatge">
+        {" "}
+        <img className="Info_img" alt="Info Image" src={props.src} />
+      </div>
+      <div className="CardInfo_title">
+        {" "}
+        <h1>{props.title}</h1>
+      </div>
+      <div className="CardInfo_text">
+        {" "}
+        <h2>{props.text}</h2>
         <Button size="small">Learn More</Button>
-      </CardActions>
-    </Card>
+      </div>
+    </div>
   );
 }
 
