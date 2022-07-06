@@ -179,6 +179,25 @@ export default function Slots() {
     }
   }, [bet, readyStart]);
 
+  const updateUser = useCallback(async () => {
+    if (readyStart) {
+      let tokens_user = credits + winPoints;
+      console.log(tokens_user);
+      if (tokens_user > 0) {
+        const userdata = await setDoc(doc(db, "usuarios", user.uid), {
+          ...user.data,
+          tokens: tokens_user,
+        });
+        console.log(userdata);
+
+        dispatch({
+          type: actionTypes.SET_COINS_USER,
+          tokens: tokens_user,
+        });
+      }
+    }
+  }, [readyStart]);
+
   const pullPossibility = (pulledNumber) => {
     switch (true) {
       case pulledNumber < 6:
@@ -299,8 +318,10 @@ export default function Slots() {
           }
           if (currentPoints > 0) {
             setscrollWords(winningPointsInformation);
+            updateUser();
           } else {
             setscrollWords(getLoser());
+            updateUser();
           }
 
           setWinPoints(currentPoints * bet);
@@ -313,7 +334,7 @@ export default function Slots() {
         setStartButtonId("start");
         setReadyStart(true);
       }, 1000);
-
+      updateUser();
       setscrollWords(waitingPointsInformation);
     }
   };

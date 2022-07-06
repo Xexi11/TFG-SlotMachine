@@ -5,6 +5,7 @@
   padding: 3%;
   height: 40%;
   width: 100%;
+  font-family: 'PT Sans', sans-serif;
   overflow-y: hidden;
   background-image: url('/images/salacasino.jpg');
   background-position: center;
@@ -13,10 +14,18 @@
   }
   .info-header {
     font-family: georgia;
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     font-size: 26px;
     font-weight: 800;
-  }
+    font-weight: bold; 
+    font-size: 30px; 
+    color: rgb(251, 246, 246); 
+    text-shadow: -1px 0 #000, 0 1px #000, 1px 0 #000, 0 -1px #000;
+    -webkit-text-stroke: 2px black;
+  
+
+}
+  
   
   .info-body {
     display: flex;

@@ -7,10 +7,7 @@ function Info_web() {
   return (
     <div className="bannerinfo">
       <div className="info-header">
-        <p className="info-header">
-          {" "}
-          <h1>Discover and play on our magnific games</h1>
-        </p>
+        <h1>Discover and play on our magnific games</h1>
       </div>
       <div class="info-body">
         <CardInfo

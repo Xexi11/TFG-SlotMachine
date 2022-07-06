@@ -16,9 +16,9 @@ function CardInfo(props) {
       </div>
       <div className="CardInfo_text">
         {" "}
-        <h2>{props.text}</h2>
-        <Button size="small">Learn More</Button>
+        <h3>{props.text}</h3>
       </div>
+      <Button size="small">Learn More</Button>
     </div>
   );
 }

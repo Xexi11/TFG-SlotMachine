@@ -32,8 +32,6 @@ export default function Profile() {
   const [open2, setOpen2] = useState(false);
   const { takeTokens, withdrawTokens } = useCasino();
 
-  /* INTENTAR que se vaya actualizando el Credits */
-
   useEffect(() => {
     //cridar al firebase
   }, []);
@@ -158,13 +156,15 @@ export default function Profile() {
                   <DialogContentText id="alert-dialog-description_buytokens">
                     Enter the number of tokens you want.
                   </DialogContentText>
-                  <TextField
-                    id="outlined-password-input"
-                    value={tokens}
-                    label="Tokens"
-                    onChange={(e) => setTokens(e.target.value)}
-                    type="number"
-                  />
+                  <div className="Dialog_textField_container">
+                    <TextField
+                      id="outlined-password-input"
+                      value={tokens}
+                      label="Tokens"
+                      onChange={(e) => setTokens(e.target.value)}
+                      type="number"
+                    />
+                  </div>
                 </DialogContent>
                 <DialogActions>
                   <Button onClick={handleClose}>Close</Button>
@@ -192,13 +192,15 @@ export default function Profile() {
                     How many Zodiac Tokens you want to exchange?. <br /> Once
                     done you will have all the coins in Phantom Tokens.
                   </DialogContentText>
-                  <TextField
-                    id="outlined-password-input"
-                    value={tokens}
-                    label="Tokens"
-                    onChange={(e) => setTokens(e.target.value)}
-                    type="number"
-                  />
+                  <div className="Dialog_textField_container">
+                    <TextField
+                      id="outlined-password-input"
+                      value={tokens}
+                      label="Tokens"
+                      onChange={(e) => setTokens(e.target.value)}
+                      type="number"
+                    />
+                  </div>
                 </DialogContent>
                 <DialogActions>
                   <Button onClick={handleClose_exchange}>Close</Button>
